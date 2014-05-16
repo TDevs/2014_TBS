@@ -1,0 +1,62 @@
+﻿ 
+<div class="tab-pane active" ng-controller="StandardDueListController">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Partial("_MemberMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bars"></i>Standard Dues
+                    </div>
+                    <div class="actions">
+                        <a href="" class="btn blue" ng-click="AddStandardDue()">
+                            <i class="fa fa-pencil"></i>Add
+                        </a>
+                          <div class="btn-group">
+                            <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div id="tblStandardDue_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label>
+                                    <input type="checkbox" checked data-column="0">Start Date</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="1">Dues</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover" id="tblStandardDue" aa-data="StandardDueList" paging-table>
+                        <thead>
+                            <tr>
+                                
+                                <th>Start Date
+                                </th>
+                                <th>Dues
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                            <tr ng-repeat="standardDueItem in StandardDueList">                                      
+                                <td>{{standardDueItem.StartDate| date: "mm-dd-yyyy"}}</td>
+                                <td>{{standardDueItem.Dues| currency: ""}}</td>
+                                <td>
+                                    <a href="" ng-click="EditStandardDue(standardDueItem)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="" ng-click="DeleteStandardDue(standardDueItem)">
+                                        <i class="fa fa-ban"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿<form class="form-horizontal" name="frmEditModelYearInsurance" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Edit Model Year Insurance</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Model Year: </label>
+            <div class="col-md-8">
+                <input type="number" maxlength="4" min="1900" ng-model="modelYearInsuranceItem.ModelYear" name="ModelYear" class="form-control" required />
+                <small style="color: #ff0000">
+                    <span class="error" ng-show="IsSubmitted && frmEditModelYearInsurance.ModelYear.$error.required">Model Year is required.</span>
+                    <span class="error" ng-show="IsSubmitted && (frmEditModelYearInsurance.ModelYear.$error.min || frmEditModelYearInsurance.ModelYear.$error.number)">Enter the Year.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Amount: </label>
+            <div class="col-md-8">
+                <input type="number" ng-model="modelYearInsuranceItem.Amount" name="Amount" class="form-control" required />
+                <small style="color: #ff0000">
+                    <span class="error" ng-show="IsSubmitted && frmEditModelYearInsurance.Amount.$error.required">Amount is required.</span>
+                    <span class="error" ng-show="IsSubmitted && frmEditModelYearInsurance.Amount.$error.number">Enter the Amount.</span>
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn-default btn green" ng-click="SaveModelYearInsurance(frmEditModelYearInsurance.$invalid)" />
+                <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+            </div>
+
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,76 @@
+﻿@Scripts.Render("~/bundles/ngbank")
+<div class="row" ng-controller="BankListController">
+    <div class="portlet box grey">   
+        <div class="portlet-title ">
+            <div class="caption">
+                <i class="fa fa-bars"></i>Banks
+            </div>
+            <div class="actions">
+                <a href="#" class="btn blue" ng-click="AddBank()">
+                    <i class="fa fa-pencil"></i>Add
+                </a>
+                <div class="btn-group">
+                    <a class="btn default" href="#" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblUser_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0">Bank Name</label>                       
+                        <label>
+                            <input type="checkbox" checked data-column="1">City</label>
+                        <label>
+                            <input type="checkbox" checked data-column="2">State</label>
+                        <label>
+                            <input type="checkbox" checked data-column="3">Phone</label>
+                         <label>
+                            <input type="checkbox" checked data-column="4">Fax</label>
+                        <label>
+                            <input type="checkbox" checked data-column="5">E-mail</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblUser" aa-data="BankList" paging-table>
+                <thead>
+                    <tr>
+                        <th>Bank Name
+                        </th>
+                        <th>City
+                        </th>
+                        <th>State
+                        </th>
+                        <th>Phone 1
+                        </th>
+                        <th>Fax
+                        </th>
+                        <th>Email
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="bank in BankList">
+                        <td>{{bank.Name}}
+                        </td>
+                        <td>{{bank.City}}
+                        </td>
+                        <td>{{bank.State}}
+                        </td>
+                        <td>{{bank.Phone1}}
+                        </td>
+                        <td>{{bank.Fax}}
+                        </td>
+                        <td>{{bank.Email}}
+                        </td>
+                        <td align="center">
+                            <a href="#" ng-click="EditBank(bank)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="#" ng-click="DeleteBank(bank);"><i class="fa fa-ban"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

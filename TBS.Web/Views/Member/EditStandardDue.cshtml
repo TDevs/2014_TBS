@@ -1,0 +1,45 @@
+﻿<form class="form-horizontal" name="frmEditStandardDue" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Create New Standard Dues</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Start Date </label>
+            <div class="col-md-8">
+                <div class="input-group input-medium date date-picker">
+                    <input type="text" class="form-control" datetime-picker="mm/dd/yyyy" ng-model="standardDueItem.StartDate" name="StartDate"  readonly="" />
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+                <small style="color: #ff0000">
+                    <span class="error" ng-show="IsSubmitted && frmAddStandardDue.StartDate.$error.required">Start Date is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Dues </label>
+            <div class="col-md-8">
+                <input type="text" ng-model="standardDueItem.Dues" class="form-control" name="Dues" required />
+                <small style="color: #ff0000">
+                    <span class="error" ng-show="IsSubmitted && frmAddStandardDue.Dues.$error.required">Dues is required.</span>
+                    <span class="error" ng-show="IsSubmitted && frmAddStandardDue.Dues.$error.number">Dues Invalid.</span>
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn green" ng-click="SaveStandardDue(frmEditStandardDue.$invalid)" />
+                <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+            </div>
+
+        </div>
+    </div>
+</form>
+

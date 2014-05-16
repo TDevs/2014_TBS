@@ -1,0 +1,150 @@
+﻿<form class="form-horizontal" name="frmEditMedallion" id="frmEditMedallion" role="form" novalidate>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="cancel" aria-hidden="true" ng-click="Cancel()"></button>
+                <h4 class="modal-title">Edit Medallion</h4>
+            </div>
+            <div class="modal-body">
+                <!--Row 1: Medallion Number-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Medallion Number</label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <input ng-model="medallionItem.MedallionNumber" class="form-control" name="MedallionNumber" required />
+                                </div>
+                                <small style="color: #ff0000">
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frmEditMedallion.MedallionNumber.$error.required">Medalion Number is required.</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Underserved</label>
+                            <div class="col-md-9">
+                                <input type="checkbox" ng-model="medallionItem.UnderServed" class="form-control" name="UnderServed" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Row 2: Vehicle Assigned-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Vehicle Assigned</label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <select ng-model="medallionItem.VehicleId" name="VehicleId" class="form-control" >
+                                        <option ng-repeat="s in vehicleAssignedList" value="{{s.VehicleId}}">{{s.VehicleAssigned}}</option>
+                                    </select>
+                                    <small style="color: #ff0000">
+                                        <span class="error" ng-show="IsSubmitted && frmEditMedallion.VehicleId.$error.required">Vehicle Assigned is required.</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Insurance Surcharge</label>
+                            <div class="col-md-9">
+                                <input ng-model="medallionItem.InsuranceSurcharge" class="form-control" name="InsuranceSurcharge" required readonly="" />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmEditMedallion.InsuranceSurcharge.$error.required">Insurance Surcharge is required.</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Row 3: Date joined -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Date Joined</label>
+                            <div class="col-md-9">
+                                <div class="input-group input-medium date date-picker">
+                                    <input type="text" ng-model="medallionItem.DateJoined" datetime-picker="mm/dd/yyyy" class="form-control" name="DateJoined" required />
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmEditMedallion.DateJoined.$error.required">Date Joined is required.</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Collision (Weekly)</label>
+                            <div class="col-md-9">
+                                <input ng-model="medallionItem.Collision" class="form-control" name="Collision" required readonly="" />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmEditMedallion.Collision.$error.required">Collision (Weekly) is required.</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Row 4: Billing Start Date -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Billing Start Date</label>
+                            <div class="col-md-9">
+                                {{medallionItem.DateJoined}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Balance</label>
+                            <div class="col-md-9">
+                                {{medallionItem.Balance}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Row 5: Billing End Date -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Billing End Date</label>
+                            <div class="col-md-9">
+                                <div class="input-group input-medium date date-picker">
+                                    <input type="text" ng-model="medallionItem.BillingEndDate" datetime-picker="mm/dd/yyyy" class="form-control" name="BillingEndDate" required />
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmEditMedallion.BillingEndDate.$error.required">Billing End Date is required.</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-offset-2 col-md-9">
+                    <input type="button" value="Save" class="btn btn green" ng-click="EditMedallion(frmEditMedallion.$invalid)" />
+                    <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

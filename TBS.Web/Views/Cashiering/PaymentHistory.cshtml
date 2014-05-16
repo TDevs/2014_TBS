@@ -1,0 +1,102 @@
+﻿<div class="tab-pane active" id="memberSearch">
+    <div class="portlet box grey" ng-controller="TransactionHistoryController">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>
+                Payment History
+            </div>
+            <div class="actions">
+                <div class="btn-group">
+                    <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblUser_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0">#</label>
+                        <label>
+                            <input type="checkbox" checked data-column="1">Medallion #</label>
+                        <label>
+                            <input type="checkbox" checked data-column="2">Due Date</label>
+                        <label>
+                            <input type="checkbox" checked data-column="3">Interval</label>
+                        <label>
+                            <input type="checkbox" checked data-column="4">SubTotal Charges</label>
+                        <label>
+                            <input type="checkbox" checked data-column="5">SubTotal Credit & Payments</label>
+                        <label>
+                            <input type="checkbox" checked data-column="6">Total</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <!--Content-->
+            <table class="table table-striped table-bordered table-hover" id="tblUser"  aa-data="TransactionHistoryList" paging-table>
+                <thead>
+                    <tr>
+                        <th>#
+                        </th>
+                        <th>Medallion #
+                        </th>
+                        <th>Due Date
+                        </th>
+                        <th>Date Received
+                        </th>
+                        <th>Interval
+                        </th>
+                        <th>SubTotal Charges
+                        </th>
+                        <th>SubTotal Credit & Payments
+                        </th>
+                        <th>Total
+                        </th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-repeat="history in TransactionHistoryList">
+                        
+                        <td>{{history.RecieptNumber}}
+                        </td>
+                        <td>{{history.MedallionNumber}}
+                        </td>
+                        <td style="text-align: right;">${{history.TransactionDate}}
+                        </td>
+                        <td>{{history.DateReceived}}
+                        </td>
+                        <td>{{history.Interval}}
+                        </td>
+                        <td>{{history.TotalDueAmount}}
+                        </td>
+                        <td>{{history.Subtotal + history.Credit + history.CreditCardAmount + history.CreditCardFee}}
+                        </td>
+                        <td>{{history.TotalPaid }}
+                        </td>
+                        <td>
+                            <a href="" ng-click="EditTransaction(history)" ng-show="$first">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="" ng-click="DeleteTransaction(history)"><i class="fa fa-ban"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--End Content-->
+            <div class="form-actions nobg fluid">
+                <div class="col-md-offset-5 col-md-9">
+                    <button type="button" class="btn btn green" ng-click="BackToList()">Back To List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    jQuery(document).ready(function () {
+        App.init(); // initlayout and core plugins
+
+        //Index.init();         
+    });
+
+</script>

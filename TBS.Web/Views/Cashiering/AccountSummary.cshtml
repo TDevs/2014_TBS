@@ -1,0 +1,35 @@
+﻿<div class="tab-pane active" id="memberSearch">
+    <div class="row" ng-controller="CashieringController">
+        @Html.Partial("_CashieringMenu")
+    </div>
+    <br />
+    <form class="row" ng-controller="" name="frm" novalidate>
+        <div class="portlet box grey">
+            <h3 class="form-section">Edit Agent</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="portlet box">
+
+                <div class="portlet-body form">
+                    <div class="form-horizontal">
+                        <div class="form-body">
+                            <!--Content-->
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Medallion Number</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="MedallionId" ng-model="InsuranceDeposit.MedallionId" required>
+                                        <option ng-repeat="medallion in MedallionList" value="{{medallion.Id}}">{{medallion.MedallionNumber}}</option>
+                                    </select>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.MedallionId.$error.required">Medallion Number is required
+                                    </span>
+                                </div>
+                            </div>
+                            <!--End Content-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

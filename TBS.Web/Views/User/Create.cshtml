@@ -1,0 +1,219 @@
+﻿<form class="form-horizontal" name="frmCreateUser" id="frmCreateUser" role="form" novalidate>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="cancel" aria-hidden="true" ng-click="Cancel()"></button>
+                <h4 class="modal-title">Create User</h4>
+
+            </div>
+            <div class="modal-body">
+                <!--Row 1: Login & Address1-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">User Name</label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input ng-model="user.UserName" class="form-control" name="UserName" required username-unique />
+                                </div>
+                                <small style="color: #ff0000">
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frmCreateUser.UserName.$error.required">User Name is required.</span>
+                                </small>
+                                <small style="color: #ff0000">
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && !frmCreateUser.UserName.$error.required && frmCreateUser.UserName.$error.usernameunique">Invalid Data.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Password</label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <input ng-model="user.Password" type="password" class="form-control" name="Password" valid-password />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+
+                                </div>
+                                <small style="color: #ff0000">
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frmCreateUser.Password.$error.required">Password is required.</span>
+                                </small>
+                                <small style="color: #ff0000">
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && !frmCreateUser.Password.$error.required && frmCreateUser.Password.$error.validpassword">Invalid Data.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Frist Name</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.FirstName" class="form-control" name="FirstName" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.FirstName.$error.required">Frist Name is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Last Name</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.LastName" class="form-control" name="LastName" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.LastName.$error.required">Last Name is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Address 1</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.Address1" class="form-control" name="Address1" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.Address1.$error.required">Address 1 is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Address 2</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.Address2" class="form-control" name="Address2" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Secret Question</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.SecretQuestion" class="form-control" name="SecretQuestion" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.SecretQuestion.$error.required">Secret question is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Secret Answer</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.SecretAnswer" class="form-control" name="SecretAnswer" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.SecretAnswer.$error.required">Secret answer is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <!--Row 2: Password & Address 2-->
+
+                        <!--Row 3: Frist Name & City -->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">City</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.City" class="form-control" name="City" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.City.$error.required">City is required.</span>
+                                </small>
+                            </div>
+                        </div>
+                        <!--Row 4: Last Name & State/Zip -->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">State/Zip</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <select class="form-control" ng-model="user.State" name="State" required>
+                                            <option ng-repeat="state in States">{{state}}</option>
+                                        </select>
+                                        <small style="color: #ff0000">
+                                            <span class="error" ng-show="IsSubmitted && frmCreateUser.State.$error.required ">State is required.
+                                            </span>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" placeholder="Zip" ng-model="user.Zip" name="Zip" input-mask="{mask:'99999'}" ng-type="phone" required valid-zip>
+                                        <small style="color: #ff0000">
+                                            <span class="error" ng-show="IsSubmitted && frmCreateUser.Zip.$error.required ">Zip is required.
+                                            </span>
+                                            <span class="error" ng-show="IsSubmitted && !frmCreateUser.Zip.$error.required && frmCreateUser.Zip.$error.validzip">Invalid Data.
+                                            </span>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Row 5: Secret Question - Fax -->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Fax</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.Fax" class="form-control" input-mask="{mask:'999-999-9999'}" ng-type="phone" name="Fax" valid-phone />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.Fax.$error.validphone">Invalid Data.</span>
+                                </small>
+                            </div>
+                        </div>
+                        <!--Row 6: Secret Answer - Active -->
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Active</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.Active" class="form-control" type="checkbox" name="Active" />
+                            </div>
+                        </div>
+                        <!--Row 7: Email - Roles -->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">E-mail</label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    <input ng-model="user.Email" class="form-control" type="email" name="Email" placeholder="Email address" required email-unique />
+                                </div>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.Email.$error.required">Invalid email address.</span>
+                                </small>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && ((!frmCreateUser.Email.$error.required && frmCreateUser.Email.$error.email)||(!frmCreateUser.Email.$error.required && frmCreateUser.Email.$error.emailunique))">Invalid email address.</span>
+                                </small>
+                            </div>
+                        </div>
+                        <!--Row 8: Phone1 - Roles -->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Phone 1</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.Phone1" input-mask="{mask:'999-999-9999'}" ng-type="phone" class="form-control" name="Phone1" required valid-phone />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateUser.Phone1.$error.required">Phone1 is required.</span>
+                                    <span class="error" ng-show="IsSubmitted && !frmCreateUser.Phone1.$error.required && frmCreateUser.Phone1.$error.validphone">Invalid Data.</span>
+                                </small>
+                            </div>
+                        </div>
+                        <!--Row 9: Phone2- Roles -->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Phone 2</label>
+                            <div class="col-md-9">
+                                <input ng-model="user.Phone2" input-mask="{mask:'999-999-9999'}" ng-type="phone" class="form-control" name="Phone2" valid-phone />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted  && frmCreateUser.Phone2.$error.validphone">Invalid Data.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-offset-2 col-md-9">
+                    <input type="button" value="Save" class="btn btn green" ng-click="Save(frmCreateUser.$valid)" />
+                    <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

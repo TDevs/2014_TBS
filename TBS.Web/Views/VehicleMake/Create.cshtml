@@ -1,0 +1,27 @@
+﻿<form class="form-horizontal" name="frmEditVehicleMake" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Create New Vehicle Make</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Name: </label>
+            <div class="col-md-8">
+                <input ng-model="vehicleMakeItem.Name" name="Name" required class="form-control" />
+                <small style="color: #ff0000">
+                    <span class="error" ng-show="IsSubmitted && frmEditVehicleMake.Name.$error.required">Name is required.</span>
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn-default btn green" ng-click="SaveVehicleMake(frmEditVehicleMake.$invalid)" />
+                <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+            </div>
+
+        </div>
+    </div>
+</form>
+

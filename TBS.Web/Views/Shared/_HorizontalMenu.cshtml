@@ -1,0 +1,50 @@
+﻿<div class="hor-menu hidden-sm hidden-xs">
+    <ul class="nav navbar-nav">
+        <li class="classic-menu-dropdown @ViewBag.HomeActive" ng-show="role.AllowDashboard==false" ng-click="ShowHomePagedMenu()">
+            <a href="#" id="mnHome">
+                Home
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="classic-menu-dropdown @ViewBag.HomeActive" ng-show="role.AllowDashboard" ng-click="ShowDashboardMenu()">
+            <a href="#" id="mnDashboard">
+                Dashboard
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="classic-menu-dropdown @ViewBag.MemberActive" id="mnMemeber" ng-show="role.ViewMemberData">
+            <a href="#" data-hover="dropdown" data-close-others="true" class="dropdown-toggle" ng-click="ShowMemberMenu()">
+                Members<i class="fa fa-group"></i>
+                <span class="selected"></span>
+            </a>
+
+        </li>
+
+        <li class="classic-menu-dropdown @ViewBag.AgentActive" ng-show="role.AgentCanCreate">
+            <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#" ng-click="ShowAgentMenu()">
+                Agents<i class="fa fa-group"></i>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+        <li class="classic-menu-dropdown @ViewBag.ReportActive" ng-show="role.ReportCanMakeReport" ng-click="ShowReportMenu()">
+            <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+                Reports<i class="fa fa-dollar"></i>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="classic-menu-dropdown @ViewBag.SettingActive" ng-show="role.ReferenceCanEdit || role.UserCanViewList || role.RoleCanViewList || role.AccountCanView">
+            <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#" ng-click="ShowSettingMenu()">
+                Settings<i class="fa fa-cog"></i>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="classic-menu-dropdown @ViewBag.SupportActive">
+            <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#" ng-click="ShowSupportMenu()">
+                Support
+                <span class="selected"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+

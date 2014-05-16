@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
+Version: 2.0.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js" ng-app="TDev" ng-controller="MasterController">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Cab Company - Lock Screen</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    @Html.Partial("_template_css")
+    <!-- END THEME STYLES -->
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body>
+    <div class="page-lock">
+        <div class="page-logo">
+            <a class="brand" href="index.html">
+                <img src="/assets/img/logo-big.png" alt="logo" />
+            </a>
+        </div>
+        <div class="page-body">            
+         @RenderBody()
+        </div>
+        <div class="page-footer">
+            2014 &copy; Metronic. Admin Dashboard Template.
+        </div>
+    </div>
+</body>
+</html>
+@Scripts.Render("~/bundles/angularjs")
+@Scripts.Render("~/bundles/ngBootstrapCore")
+ 
+@Scripts.Render("~/bundles/assetsjs")
+@Scripts.Render("~/bundles/ngMaster")

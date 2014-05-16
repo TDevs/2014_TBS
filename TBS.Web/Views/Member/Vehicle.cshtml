@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Member - Vehicle";
+}
+<div class="tab-pane active" ng-controller="VehicleListController">
+    <div class="row">
+     <div class="col-md-3">
+            @Html.Partial("_MemberMenu")
+        </div>
+        <div class="col-md-9">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-user"></i>Vehicle
+                    </div>
+                    <div class="actions">
+                        <a href="" class="btn blue" ng-click="AddVehicle()">
+                            <i class="fa fa-plus"></i>Add
+                        </a>
+                        <div class="btn-group">
+                            <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div id="tblUser_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label>
+                                    <input type="checkbox" checked data-column="0">License Number</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="1">License State</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="2">Make</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="3">Model</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="4">Year</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="5">EIN</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="6">VIN</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="7">Medallion#</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="8">Underserved</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover" id="tblUser" aa-data="Vehicles" paging-table>
+                        <thead>
+                            <tr>
+                                <th>License Number.
+                                </th>
+                                <th>License State
+                                </th>
+                                <th>Make
+                                </th>
+                                <th>Model
+                                </th>
+                                <th>Year
+                                </th>
+                                <th>EIN
+                                </th>
+                                <th>VIN
+                                </th>
+                                <th>Medallion#
+                                </th>
+                                <th>Underserved
+                                </th>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="vehicle in Vehicles">
+                                <td>{{vehicle.LicenseNumber}}
+                                <input type="hidden" ng-model="vehicle.Id" />
+                                </td>
+                                <td>{{vehicle.LicenseState}}
+                                </td>
+                                <td>{{vehicle.VehicleMake.Name}}
+                                </td>
+                                <td>{{vehicle.VehicleModel.Name}}
+                                </td>
+                                <td>{{vehicle.ModelYear}}
+                                </td>
+                                <td>{{vehicle.EINNumber}}
+                                </td>
+                                <td>{{vehicle.VINNumber}}
+                                </td>
+                                <td>{{vehicle.Medallion}}
+                                </td>
+                                <td align="center">
+                                    <input type="checkbox" readonly ng-model="vehicle.UnderServed" />
+                                </td>
+                                <td align="center">
+                                    <a href="" title="Edit" ng-click="EditVehicle(vehicle)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="" title="Delete" ng-click="DeleteVehicle(vehicle)">
+                                        <i class="fa fa-ban"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

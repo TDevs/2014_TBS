@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TDevs.Domain
+{
+    public static class IdentityRoleExtensions
+    {
+        public static  string Description { get; set; }
+        public static string Predefined { get; set; }
+
+        public static void SayHello() { }
+    }
+}

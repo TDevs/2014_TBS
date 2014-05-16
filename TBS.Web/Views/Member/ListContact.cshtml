@@ -1,0 +1,82 @@
+﻿<div class="tab-pane active" ng-controller="ContactListController">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Partial("_MemberMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bars"></i>Contact
+                    </div>
+                    <div class="actions">
+                        <a href="" class="btn blue" ng-click="AddContact()">
+                            <i class="fa fa-pencil"></i>Add
+                        </a>
+                        <div class="btn-group">
+                            <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div id="tblBank_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label>
+                                    <input type="checkbox" checked data-column="0">First Name</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="1">Last Name</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="2">Title</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="3">Mobile Phone</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="4">Home Phone</label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover" id="tblBank" paging-table aa-data="ContactList">
+                        <thead>
+                            <tr>
+
+                                <th>First Name
+                                </th>
+                                <th>Last Name
+                                </th>
+                                <th>Title
+                                </th>
+                                <th>Mobile Phone
+                                </th>
+                                <th>Home Phone
+                                </th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>                               
+                            <tr ng-repeat="contact in ContactList">
+
+                                <td>{{contact.FirstName}}
+                                </td>
+                                <td>{{contact.LastName}}
+                                </td>
+                                <td>{{contact.Title}}
+                                </td>
+                                <td>{{contact.MobilePhone}}
+                                </td>
+                                <td>{{contact.HomePhone}}
+                                </td>
+
+                                <td>
+                                    <a href="" ng-click="EditContact(contact);">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="" ng-click="DelContact(contact);"><i class="fa fa-ban"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,53 @@
+﻿<div class="tab-pane active" id="memberSearch">
+   <div class="row" ng-controller="CashieringAgentController">
+        <div class="col-md-3">
+            @Html.Partial("_AgentMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey" ng-controller="SavingDepositAgentController">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-reorder"></i>
+                        Savings Deposit
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form name="frm" novalidate class="form-horizontal">
+                        <br />
+                        <div class="row">
+                            <!--Content-->
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Medallion Number</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="MedallionId" ng-model="SavingDeposit.MedallionId" ng-change="MedallionChange(SavingDeposit.MedallionId)" required>
+                                        <option ng-repeat="medallion in MedallionList" value="{{medallion.MedallionId}}">{{medallion.MedallionNumber}}</option>
+                                    </select>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.MedallionId.$error.required">Medallion Number is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Total Paid</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-modal="SavingDeposit.TotalPaid">{{SavingDeposit.TotalPaid}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Comments</label>
+                                <div class="col-md-6">
+                                    <textarea type="text" class="form-control" name="Comments" ng-model="SavingDeposit.Comments"></textarea>
+                                </div>
+                            </div>
+                            <!--End Content-->
+                        </div>
+                    </form>
+                    <div class="form-actions nobg fluid">
+                        <div class="col-md-offset-5 col-md-9">
+                            <button type="button" class="btn btn green" ng-click="Save(frm.$invalid)">Save   </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

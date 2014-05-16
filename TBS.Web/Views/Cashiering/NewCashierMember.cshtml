@@ -1,0 +1,587 @@
+﻿<div class="tab-pane active">
+    <div ng-controller="NewCashierMemberController">
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-money"></i>
+                    Cashiering Member
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form name="frm" novalidate class="form-horizontal">
+                    <br />
+                    <div class="row">
+                        <!--Content-->
+                        <!-- General Information-->
+                        <div class="col-md-6">
+                            <div class="portlet box">
+                                <div class="portlet-body form">
+                                    <div class="form-horizontal">
+                                        <div class="form-body">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Account No:</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{{NewBill.Member.AccountNumber}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Medallion #:</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{{NewBill.Medallion.MedallionNumber}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Corp. Name</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{{NewBill.Member.Name}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Start Date</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{{NewBill.Bill.StartDate}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">End Date</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{{NewBill.Bill.EndDate}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Next To Payment</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label">{{NewBill.Bill.NextPayment}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group ">
+                                                <label class="col-md-1 control-label"></label>
+                                                <div class="col-md-4">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input class="ng-pristine ng-valid" type="checkbox" name="CTATAP" ng-model="NewBill.Bill.InsuranceSticker" checked="NewBill.Bill.InsuranceSticker">
+                                                            Insurance Sticker?
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <form name="frmInit" novalidate>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Interval</label>
+                                                    <div class="col-md-2">
+                                                        <input type="text" class="form-control" name="Interval" ng-model="Interval" input-mask="{mask:999}" ng-type="decimal" required>
+                                                        <span style="color: #ff0000" ng-show="IsInit && frmInit.Interval.$error.required">Interval is required
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <input type="radio" checked="" value="D" name="optionsRadios" ng-model="TransactionType" />Days  
+                                                                    <input type="radio" checked="" value="W" name="optionsRadios" ng-model="TransactionType" />Weeks   
+                                                                    <input type="radio" checked="" value="M" name="optionsRadios" ng-model="TransactionType" />Months                                                                 </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <button type="button" class="btn" ng-click="MakeCurrent()">Make Currents</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+
+                                            <!--Fees And Dues-->
+                                            `
+                               
+                                                        <div class="form-group">
+                                                            <div class="col-md-12">
+                                                                <button type="button" class="btn btn yellow" ng-click="ReInitialize(frmInit.$invalid)">Re-Initialize</button>
+                                                                <button type="button" class="btn btn yellow" ng-click="ZeroOut()">Turn On Zero-Out</button>
+                                                                <button type="button" class="btn btn yellow" ng-click="TurnOffZeroOut()">Turn Off Zero-Out</button>
+                                                            </div>
+                                                        </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Balance</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        <input ng-model="NewBill.Bill.Balance" class="form-control" name="Balance" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Association Dues</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        <input type="text" ng-model="NewBill.Bill.AssociationDueAmount" class="form-control" name="AssociationDueAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.AssociationDueAmount.$error.required">Association Due is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Collision Insurance</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.CollsionInsuranceAmount" class="form-control" name="CollsionInsuranceAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.CollsionInsuranceAmount.$error.required">Collsion Insurance is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Workers Compenstation</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.WorkerCompensationAmount" class="form-control" name="WorkerCompensationAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.WorkerCompensationAmount.$error.required">Worker Compensation is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Loan</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.Loan" class="form-control" name="Loan" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required ng-disabled="!IsZeroOut" />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.Loan.$error.required">Loan is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Werks Recievable</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        <input type="text" ng-model="NewBill.Bill.WerkReceivableAmount" class="form-control" name="WerkReceivableAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required ng-disabled="!IsZeroOut" />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.WerkReceivableAmount.$error.required">Werk Receivable is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Account Receivable</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.AccountReceivableAmount" class="form-control" name="AccountReceivableAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required ng-disabled="!IsZeroOut" />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.AccountReceivableAmount.$error.required">Account Receivable is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Insurance Deposit</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.InsuranceDepositAmount" class="form-control" name="InsuranceDepositAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required ng-disabled="!IsZeroOut" />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.InsuranceDepositAmount.$error.required">Insurance Deposit is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">CC System Airtime</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.CCSystemAirtimeAmount" class="form-control" name="CCSystemAirtimeAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required ng-disabled="!IsZeroOut" />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.CCSystemAirtimeAmount.$error.required">CCSystem Airtime is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Misc. Charge</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.MiscCharge" class="form-control" name="MiscCharge" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.MiscCharge.$error.required">Misc. Charge is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Late Fees</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+
+                                                        <input type="text" ng-model="NewBill.Bill.LateFees" class="form-control" name="LateFees" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.LateFees.$error.required">Late Fees is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">Savings Deposit</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        <input type="text" ng-model="NewBill.Bill.SavingDepositAmount" class="form-control" name="SavingDepositAmount" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required ng-disabled="IsZeroOut" />
+                                                    </div>
+                                                    <small style="color: #ff0000">
+                                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.SavingDepositAmount.$error.required">Saving Deposit is required.</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">SubTotal</label>
+                                                <div class="col-md-8">
+                                                    <label class="control-label" ng-model="NewBill.Bill.TotalDueAmount">{{NewBill.Bill.TotalDueAmount}}</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Credits and Payments-->
+                        <div class="col-md-5">
+                            <div class="portlet-title ">
+                                <div class="caption">
+                                    <i class="fa fa-bars">Credits and Payments</i>
+                                </div>
+                            </div>
+                            <div class="portlet box">
+                                <div class="portlet-body form">
+                                    <div class="form-horizontal">
+                                        <div class="form-body">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Credit</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="Credit" ng-model="NewBill.Bill.Credit" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required>
+                                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.Credit.$error.required">Credit is required
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Credit Card-->
+                        <div class="col-md-5">
+                            <div class="portlet-title ">
+                                <div class="caption">
+                                    <i class="fa fa-bars">Credit Card</i>
+                                </div>
+                            </div>
+                            <div class="portlet box">
+                                <div class="portlet-body form">
+                                    <div class="form-horizontal">
+                                        <div class="form-body">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Amount(QTY)</label>
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" name="CreditCardAmount" ng-model="NewBill.Bill.CreditCardAmount" input-mask="" ng-type="currency" required>
+                                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.CreditCardAmount.$error.required">Amount is required
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Processing Fee</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="CreditCardFee" ng-model="NewBill.Bill.CreditCardFee" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required>
+                                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.CreditCardFee.$error.required">Processing Fee is required
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Auto Cashiering-->
+                        <div class="col-md-5">
+                            <div class="portlet-title ">
+                                <div class="caption">
+                                    <i class="fa fa-bars">Automatic Cashiering</i>
+                                </div>
+                            </div>
+                            <div class="portlet box">
+                                <div class="portlet-body form">
+                                    <div class="form-horizontal">
+                                        <div class="form-body">
+                                            <div class="form-group ">
+                                                <label class="col-md-1 control-label"></label>
+                                                <div class="col-md-5">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input class="ng-pristine ng-valid" type="checkbox" name="IsAutoCashiering" ng-model="NewBill.Bill.IsAutoCashiering" checked="{{NewBill.Bill.IsAutoCashiering}}">
+                                                            Automatic Cashiering
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Cash</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="Cash" ng-model="NewBill.Bill.Cash" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required>
+                                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.Cash.$error.required">Cash is required
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Check</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="Check" ng-model="NewBill.Bill.Check" input-mask="{mask:'999,999,999.99'}" ng-type="currency" required>
+                                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.Check.$error.required">Check is required
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Amount Paid</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label-control" ng-model="NewBill.Bill.TotalPaidAmount">{{NewBill.Bill.TotalPaidAmount}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Subtotal</label>
+                                                <div class="col-md-6">
+                                                    <label class="control-label" name="Subtotal" ng-model="NewBill.Bill.Subtotal">{{NewBill.Bill.Subtotal}}</label>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Content-->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Total</label>
+                                <div class="col-md-8" style="text-align: right;">
+                                    <label class="control-label" ng-model="NewBill.Bill.TotalPaid">${{NewBill.Bill.TotalPaid}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-actions nobg fluid">
+                    <div class="col-md-offset-5 col-md-9">
+                        <button type="button" class="btn btn green" ng-click="Save(frm.$invalid)">Make Payment</button>
+                        <button type="button" class="btn btn default" ng-click="CancelPayment(frm.$invalid)">Cancel Payment </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bell-o"></i>
+                        Loans
+                    </div>
+                    <div class="tools">
+                        <a class="collapse" href="javascript:;"></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>
+                                                    <i class="fa fa-briefcase"></i>
+                                                    Loan
+                                                </th>
+                                                <th class="hidden-xs">
+                                                    <i class="fa fa-user"></i>
+                                                    Interest
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Interest Paid
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Principal Paid
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Total Paid
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Balance
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="loan in MetricList.Loans">
+                                                <td>{{loan.Title}}</td>
+                                                <td class="hidden-xs">{{loan.Loan}}</td>
+                                                <td>{{loan.Interest}}</td>
+                                                <td>{{loan.InterestedPaid}}</td>
+                                                <td>{{loan.PrincipalPaid}}</td>
+                                                <td>{{loan.TotalPaid}}</td>
+                                                <td>{{loan.Balance}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bell-o"></i>
+                        Deposits
+                    </div>
+                    <div class="tools">
+                        <a class="collapse" href="javascript:;"></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>
+                                                    <i class="fa fa-briefcase"></i>
+                                                    Deposit
+                                                </th>
+                                                <th class="hidden-xs">
+                                                    <i class="fa fa-user"></i>
+                                                    Weekly Payment
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Total Paid
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Balance
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="deposit in MetricList.Deposits">
+                                                <td>{{deposit.Title}}</td>
+                                                <td class="hidden-xs">{{deposit.Deposit}}</td>
+                                                <td>{{deposit.WeeklyPayment}}</td>
+                                                <td>{{deposit.TotalPaid}}</td>
+                                                <td>{{deposit.Balance}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bell-o"></i>
+                        Account Receivables
+                    </div>
+                    <div class="tools">
+                        <a class="collapse" href="javascript:;"></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>
+                                                    <i class="fa fa-briefcase"></i>
+                                                    Amount
+                                                </th>
+                                                <th class="hidden-xs">
+                                                    <i class="fa fa-user"></i>
+                                                    Monthly Payment
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Total Paid
+                                                </th>
+                                                <th>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Balance
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="account in MetricList.Receivable">
+                                                <td>{{account.Title}}</td>
+                                                <td class="hidden-xs">{{account.Amount}}</td>
+                                                <td>{{account.MonthlyPayment}}</td>
+                                                <td>{{account.TotalPaid}}</td>
+                                                <td>{{account.Balance}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

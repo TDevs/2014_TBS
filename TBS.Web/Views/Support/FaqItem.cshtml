@@ -1,0 +1,55 @@
+﻿
+@*<script src="~/assets/plugins/ckeditor/ckeditor.js"></script>*@
+
+<div id="large" tabindex="-1" role="dialog" aria-hidden="true">
+    <form class="form-horizontal" id="frmFAQ" novalidate>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-full">
+                <div class="modal-header">
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-reorder"></i> {{FormTitle}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Question</label>
+                                    <div class="col-md-9">
+                                        <input type="text" placeholder="Enter Question" name="Question" class="form-control" ng-model="faq.Question">
+                                        <small style="color:#ff0000">
+                                            <span class="error" ng-show="IsSubmitted && frmFAQ.Question.$error.required">Question is required.</span>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Answer</label>
+                                    <div class="col-md-9">
+                                        <textarea data-ng-model="faq.Answer" name="Answer" class="ckeditor" data-ck-editor required></textarea>
+                                        <small style="color:#ff0000">
+                                            <span class="error" ng-show="IsSubmitted && frmFAQ.Answer.$error.required">Answer is required.</span>
+                                        </small>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-actions fluid">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn green" type="button" ng-click="Save(frmFAQ.$invalid)">Save</button>
+                            <button class="btn default" type="button" ng-click="Cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </form>
+</div>

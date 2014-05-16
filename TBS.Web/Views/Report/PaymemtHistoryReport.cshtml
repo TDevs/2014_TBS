@@ -1,0 +1,142 @@
+﻿@Scripts.Render("~/bundles/ngReport")
+<div class="tab-pane active" ng-controller="PaymemtHistoryReportController">
+    <div class="row">
+        <form name="frm" novalidate>
+            <div class="col-md-12">
+                <h3 class="form-section">Paymemt History Report</h3>
+            </div>
+            <div class="col-md-12">
+                <div class="portlet box">
+                    <div class="portlet-body form">
+                        <div class="form-horizontal">
+                            <div class="form-body">
+                                <!--Content-->
+                                <div class="form-group">     
+                                    <label class="col-md-3 control-label">Member Status</label>
+                                    <div class="col-md-6 radio-list">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" ng-model="report.MemberStatus" value="Active">
+                                                        Active
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" ng-model="report.MemberStatus" value="Deleted">
+                                                        Deleted
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" ng-model="report.MemberStatus" value="All">
+                                                        All
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Member</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" ng-model="report.MemberId" name="MemberId" ng-change="LoadMemberMedallion(report.MemberId)" required>
+                                            <option ng-repeat="member in MemberList" value="{{member.MemberId}}">{{member.AccountNumber}}</option>
+                                        </select>
+                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.MemberId.$error.required">Member is required
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Medallion</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" ng-model="report.MedallionId" name="MedallionId" required>
+                                            <option ng-repeat="item in Medallions" value="{{item.MedallionId}}">{{item.MedallionNumber}}</option>
+                                        </select>
+                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.MedallionId.$error.required">Medallion is required
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Start Date</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group input-medium date date-picker">
+                                            <input type="text" class="form-control" readonly="" name="StartDate" datetime-picker="mm/dd/yyyy" ng-model="report.StartDate">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button">
+                                                    <i class="fa fa-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">End Date</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group input-medium date date-picker">
+                                            <input type="text" class="form-control" readonly="" name="StartDate" datetime-picker="mm/dd/yyyy" ng-model="report.EndDate">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button">
+                                                    <i class="fa fa-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <fieldset>
+                                    <legend>Fees</legend>
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <input type="button" class="btn blue btn-primary" name="All" value="All" ng-click="CheckFeeType(true)" />
+                                            <input type="button" class="btn blue" name="None" value="None" ng-click="CheckFeeType(false)" />
+                                        </div>
+                                        <div class="col-md-6" id="feeDiv">
+                                            <div ng-repeat="item in report.FeeTypes">
+                                                <input type="checkbox" ng-model="item.IsChoose">
+                                                {{item.Description}}<br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Payments</legend>
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <input type="button" class="btn blue btn-primary" name="All" value="All" ng-click="CheckPaymentType(true)" />
+                                            <input type="button" class="btn blue" name="None" value="None" ng-click="CheckPaymentType(false)" />
+                                        </div>
+                                        <div class="col-md-6" id="paymentDiv">
+                                            <div ng-repeat="item in report.PaymentTypes">
+                                                <input type="checkbox" ng-model="item.IsChoose">
+                                                {{item.Description}}<br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-7">
+            <div class="portlet box">
+                <div class="portlet-body ">
+                    <div class="form-horizontal">
+                        <div class="clearfix">
+                            <div class="col-md-offset-8 col-md-7">
+                                <button type="button" class="btn blue btn-lg" ng-click="GenerateReport(frm.$invalid)">Generate Report </button>
+                                <button type="button" class="btn blue btn-lg">Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped table-bordered table-hover" id="tblUser" aa-data="TransactionHistoryList" paging-table>             
+        </table>
+    </div>
+</div>

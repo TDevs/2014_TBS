@@ -1,0 +1,59 @@
+﻿@Scripts.Render("~/bundles/ngReport")
+<div class="tab-pane active">
+    <div class="row" ng-controller="VehicleReportController">
+        <form name="frm" novalidate>
+            <div class="col-md-12">
+                <h3 class="form-section">Vehicle Report</h3>
+            </div>
+            <div class="col-md-12">
+                <div class="portlet box">
+                    <div class="portlet-body form">
+                        <div class="form-horizontal">
+                            <div class="form-body">
+                                <!--Content-->
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Vehicle Make</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" ng-model="vehicleReport.VehicleMakeId" name="VehicleMakeId" required>
+                                            <option ng-repeat="make in VehicleMakes" value="{{make.Id}}">{{make.Name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Year From</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" ng-model="vehicleReport.YearFrom" name="ModelYear" required>
+                                            <option ng-repeat="year in ModelYears" value="{{year}}">{{year}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Year To</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" ng-model="vehicleReport.YearTo" name="ModelYear" required>
+                                            <option ng-repeat="year in ModelYears" value="{{year}}">{{year}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-7">
+            <div class="portlet box">
+                <div class="portlet-body ">
+                    <div class="form-horizontal">
+                        <div class="clearfix">
+                            <div class="col-md-offset-8 col-md-7">
+                                <button type="button" class="btn blue btn-lg" ng-click="Save(frm.$invalid)">Generate Report </button>
+                                <button type="button" class="btn blue btn-lg">Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

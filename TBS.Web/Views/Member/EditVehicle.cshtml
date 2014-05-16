@@ -1,0 +1,218 @@
+﻿@Scripts.Render("~/bundles/ngVehicle")
+<div class="tab-pane active" id="memberVehicle">
+    
+    <br />
+    <div class="portlet box grey" ng-controller="VehicleEditController">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-reorder"></i>
+                Edit Vehicle
+            </div>
+        </div>
+        <div class="portlet-body form">
+
+            <form class="form-horizontal" name="frmVehicle" novalidate>
+                </br>
+                    <!--Row 1: License number & license state-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">License Number</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input ng-model="vehicle.LicenseNumber" class="form-control" name="LicenseNumber" required />
+                                </div>
+                                <small style="color: #ff0000">
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frmVehicle.LicenseNumber.$error.required">License number is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">License State</label>
+                            <div class="col-md-7">
+                                <select class="form-control" ng-model="vehicle.LicenseState" name="LicenseState" required>
+                                    <option ng-repeat="state in States">{{state}}</option>
+                                </select>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.LicenseState.$error.required ">State is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <!--Row 2: Vehicle make & Radio serial number-->
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Make</label>
+                            <div class="col-md-7">
+                                <select class="form-control" ng-model="vehicle.VehicleMakeId" name="VehicleMakeId" required>
+                                    <option ng-repeat="make in VehicleMakes" value="{{make.Id}}">{{make.Name}}</option>
+                                </select>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.VehicleMakeId.$error.required ">State is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Radio Serial Number</label>
+                            <div class="col-md-7">
+                                <input ng-model="vehicle.RadioSerialNumber" class="form-control" name="RadioSerialNumber" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.RadioSerialNumber.$error.required ">Radio Serial Number is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <!--Row 3: Vehicle Model & Meter Manafacture-->
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Model</label>
+                            <div class="col-md-7">
+                                <select class="form-control" ng-model="vehicle.VehicleModelId" name="VehicleModelId" required>
+                                    <option ng-repeat="model in VehicleModels" value="{{model.Id}}">{{model.Name}}</option>
+                                </select>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.VehicleModelId.$error.required ">Vehicle mode is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Meter Manufacture</label>
+                            <div class="col-md-7">
+
+                                <select class="form-control" ng-model="vehicle.MeterManufacturerId" name="MeterManufacturerId" required>
+                                    <option ng-repeat="meter in MeterManufacturers" value="{{meter.Id}}">{{meter.Description}}</option>
+                                </select>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.MeterManufacturerId.$error.required ">Meter Manufacturer is required.
+                                    </span>
+                                </small>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Model Year</label>
+                            <div class="col-md-7">
+                                <select class="form-control" ng-model="vehicle.ModelYear" name="ModelYear" required>
+                                    <option ng-repeat="year in ModelYears" value="{{year}}">{{year}}</option>
+                                </select>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.ModelYear.$error.required ">Model Year is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Meter Number</label>
+                            <div class="col-md-7">
+                                <input ng-model="vehicle.MeterNumber" class="form-control" name="MeterNumber" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.MeterNumber.$error.required ">Meter Number is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Row 4: Model year & Meter number-->
+
+                    <div class="col-md-6">
+                        <!--Row 5: Vehicle Feature & EIN number-->
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Vehicle Feature</label>
+                            <div class="col-md-7">
+                                <select class="form-control" ng-model="vehicle.VehicleFeatureId" name="VehicleFeatureId" required>
+                                    <option ng-repeat="feature in VehicleFeatures" value="{{feature.Id}}">{{feature.Name}}</option>
+                                </select>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.VehicleFeatureId.$error.required ">Vehicle Feature is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">EIN Number</label>
+                            <div class="col-md-7">
+                                <input ng-model="vehicle.EINNumber" class="form-control" name="EINNumber" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.EINNumber.$error.required ">EIN Number is required.
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <!--Row 6: VINNumber - Medallion -->
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">VIN Number</label>
+                            <div class="col-md-7">
+                                <input ng-model="vehicle.VINNumber" class="form-control" name="VINNumber" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.VINNumber.$error.required">VIN Number is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Medallion</label>
+                            <div class="col-md-7">
+                                <select class="form-control" ng-model="vehicle.MedallionId" name="MedallionId" required>
+                                    <option ng-repeat="medallion in Medallions" value="{{medallion.Id}}">{{medallion.MedallionNumber}}</option>
+                                </select>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.MedallionId.$error.required">Medallion is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <!--Row 7: Isurance Policy - Underserved -->
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Insurance Policy Number</label>
+                            <div class="col-md-7">
+                                <input ng-model="vehicle.InsurancePolicyNumber" class="form-control" name="InsurancePolicyNumber" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.InsurancePolicyNumber.$error.required">Insurance Policy Number is required.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">UnderServed</label>
+                            <div class="col-md-7">
+                                <input ng-model="vehicle.UnderServed" class="form-control" type="checkbox" name="UnderServed" />
+                            </div>
+                        </div>
+                        <!--Row 77: Isurance Policy - Underserved -->
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Workman Company Number</label>
+                            <div class="col-md-7">
+                                <input ng-model="vehicle.WorkmanCompNumber" class="form-control" name="WorkmanCompNumber" required />
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmVehicle.WorkmanCompNumber.$error.required">Workman Company Number is required.</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="form-actions nobg fluid">
+                <div class="col-md-offset-5 col-md-9">
+                    <button type="button" class="btn btn green" ng-click="Save(frmVehicle.$valid)">Save</button>
+                    <button class="btn btn-default" ng-click="Cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

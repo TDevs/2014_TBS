@@ -1,0 +1,105 @@
+﻿<div class="tab-pane active">
+    <div class="row" ng-controller="CashieringController">
+        <div class="col-md-3">
+            @Html.Partial("_CashieringMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey" ng-controller="LoanListController">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-reorder"></i>
+                        Loans
+                    </div>
+                    <div class="actions">
+                        <a href="" class="btn blue" ng-click="AddLoan()">
+                            <i class="fa fa-pencil"></i>Add
+                        </a>
+                        <div class="btn-group">
+                            <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div id="tblUser_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label>
+                                    <input type="checkbox" checked data-column="0">Loan Name</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="1">Medallion #</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="2">Amount</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="3">Start Date</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="4">End Date</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="5">Status</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="6">Total Paid</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="7">Total Interest Paid</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="8">Total Principal</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover" id="tblUser" aa-data="LoanList" paging-table>
+                        <thead>
+                            <tr>
+                                <th>Loan Name
+                                </th>
+                                <th>Medallion # 
+                                </th>
+                                <th>Amount
+                                </th>
+                                <th>Start Date
+                                </th>
+                                <th>End Date 
+                                </th>
+                                <th>Status
+                                </th>
+
+                                <th>Total Paid
+                                </th>
+                                <th>Total Interest Paid
+                                </th>
+                                <th>Total Principal
+                                </th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="loan in LoanList">
+                                <td>{{loan.LoanName}}
+                                </td>
+                                <td>{{loan.Medallion.MedallionNumber}}
+                                </td>
+                                <td>{{loan.LoanAmount}}
+                                </td>
+                                <td>{{loan.StartDate}}
+                                </td>
+                                <td>{{loan.EndDate}}
+                                </td>
+                                <td>{{loan.Status}}
+                                </td>
+                                <td>{{loan.TotalPaid}}
+                                </td>
+                                <td>{{loan.TotalInterestPaid}}
+                                </td>
+                                <td>{{loan.TotalPrincipalPaid}}
+                                </td>
+                                <td align="center">
+                                    <a href="" ng-click="EditLoan(loan)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="" ng-click="DeleteLoan(loan);"><i class="fa fa-ban"></i></a>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "LockScreen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<img class="page-lock-img" src="/assets/img/profile/profile.jpg" alt="">
+<div class="page-lock-info" ng-controller="LockscreenController">
+    <h1>{{User.FullName}}</h1>
+    <span class="email">{{User.Email}}
+    </span>
+    <span class="locked">Locked
+    </span>
+    <form class="form-inline" name="frm">
+        <div class="input-group input-medium">
+            <input type="text" class="form-control" placeholder="Password" name="Password" ng-model="User.Password" required>
+            <span class="input-group-btn">
+                <button type="button" ng-click="ReLogin()" class="btn blue icn-only"><i class="m-icon-swapright m-icon-white"></i></button>
+            </span>
+        </div>
+        <span style="color: #ff0000" ng-show="IsSubmitted && frm.Password.$error.required">Password is required
+        </span>
+        <span style="color: #ff0000" ng-show="IsSubmitted && !frm.Password.$error.required && frm.Password.$error.password">Login Unsuccess.
+        </span>
+        <!-- /input-group -->
+        <div class="relogin">
+            <a href="/Account/Login">Not {{User.FullName}} ?
+            </a>
+        </div>
+    </form>
+</div>
+

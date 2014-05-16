@@ -1,0 +1,114 @@
+﻿<div class="tab-pane active" id="memberSearch">
+    <div class="row" ng-controller="CashieringController">
+        <div class="col-md-3">
+            @Html.Partial("_CashieringMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey" ng-controller="AccountReceivableController">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-reorder"></i>
+                        Account Receivables
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form name="frm" novalidate class="form-horizontal">
+                        <br />
+                        <div class="row">
+                            <!--Content-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Medallion Number</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="MedallionId" ng-model="AccountReceivable.MedallionId" ng-change="MedallionChange(AccountReceivable.MedallionId)" required>
+                                        <option ng-repeat="medallion in MedallionList" value="{{medallion.MedallionId}}">{{medallion.MedallionNumber}}</option>
+                                    </select>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.MedallionId.$error.required">Medallion Number is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Account Receivable</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="AccountReceivableAmount" ng-model="AccountReceivable.AccountReceivableAmount" input-mask="{mask:9999.99}" ng-type="decimal" required>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.AccountReceivableAmount.$error.required">Account Receivable is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Start Date</label>
+                                <div class="col-md-6">
+                                    <div class="input-group input-medium date date-picker">
+                                        <input type="text" class="form-control" readonly="" name="StartDate" datetime-picker="mm/dd/yyyy" ng-model="AccountReceivable.StartDate" required>
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.StartDate.$error.required">Start Date is required
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">End Date</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AccountReceivable.EndDate">{{AccountReceivable.EndDate}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Payment Term (months)</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="PaymentTermMonth" ng-model="AccountReceivable.PaymentTermMonth" input-mask="{mask:99}" ng-type="decimal" required>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.PaymentTermMonth.$error.required">Payment Term (months) is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Monthly Payment</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AccountReceivable.CalculatedMonthlyPayment">{{AccountReceivable.MonthlyPayment}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Total Paid</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AccountReceivable.TotalPaid">{{AccountReceivable.TotalPaid}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Current Balance</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AccountReceivable.CurrentBalance">{{AccountReceivable.CurrentBalance}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Comments</label>
+                                <div class="col-md-6">
+                                    <textarea type="text" class="form-control" name="Comments" ng-model="AccountReceivable.Comments"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Status</label>
+                                <div class="col-md-6">
+                                    <label class="control-label">{{AccountReceivable.Status}}</label>
+                                </div>
+                            </div>
+                            <!--End Content-->
+                        </div>
+                    </form>
+                    <div class="form-actions nobg fluid">
+                        <div class="col-md-offset-5 col-md-9">
+                            <button type="button" class="btn btn green" ng-click="Save(frm.$invalid)">Save   </button>
+                            <button type="button" class="btn btn green" ng-click="Recalculate(frm.$invalid)">Recalculate </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

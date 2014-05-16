@@ -1,0 +1,123 @@
+﻿@{          
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/nguniversalagent")
+<div ng-controller="MobilityUploadController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-reorder"></i>
+                        Mobility Uploading Sheet
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form class="form-horizontal form-bordered" action="#">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">File</label>
+                                <div class="col-md-9">
+                                    <div class="fileinput fileinput-new" style="display: block;">
+                                        <span class="input-group-addon btn default btn-file">
+                                            <span class="fileinput-new">Select file </span>
+                                            <input type="file" name="..." id="divUploadImage" style="width: 200px; margin-right: 50px;">
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box grey">
+                <!-- Table Result Of Search-->
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bars"></i>Result Mobility
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover" id="tblBank">
+                        <thead>
+                            <tr>
+                                <th>Date
+                                </th>
+                                <th>Client Name
+                                </th>
+                                <th>ID #
+                                </th>
+                                <th>MD</th>
+                                <th>Pick up Address         
+                                </th>
+                                <th>Due 
+                                </th>
+                                <th>P/U 
+                                </th>
+                                <th>Drop Off Address</th>
+                                <th>Phone       
+                                </th>
+                                <th>D/O 
+                                </th>
+                                <th>Early</th>
+                                <th>Late</th>
+                                <th>N/S</th>
+                                <th>Hold</th>
+                                <th>CAB
+                                </th>
+                                <th>CL
+                                </th>
+                                <th>AMT
+                                </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr ng-show="MobilityList.length<=0">
+                                <td colspan="17" style="text-align: center">No Records </td>
+                            </tr>
+                            <tr ng-repeat="mobi in MobilityList">
+                                <td>{{mobi.DateRun}}
+                                </td>
+                                <td>{{mobi.ClientName}}
+                                </td>
+                                <td>{{mobi.LicenseNumber}}
+                                </td>
+                                <td>{{mobi.MD}}</td>
+                                <td>{{mobi.PickupAddress}}
+                                </td>
+                                <td>{{mobi.DueTime}}
+                                </td>
+                                <td>{{mobi.PUTime}}
+                                </td>
+                                <td>{{mobi.DropOffAddress}}
+                                </td>
+                                <td>{{mobi.Phone}}</td>
+                                <td>{{mobi.DOTime}}
+                                </td>
+                                <td>{{mobi.Early}}</td>
+                                <td>{{mobi.Late}}</td>
+                                <td>{{mobi.NS}}</td>
+                                <td>{{mobi.Hold}}</td>
+                                <td>{{mobi.CAB}}
+                                </td>
+                                <td>{{mobi.CL}}
+                                </td>
+                                <td>{{mobi.Amount}}
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

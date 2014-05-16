@@ -1,0 +1,90 @@
+﻿ 
+<div class="tab-pane active" ng-controller="MedallionListController">
+    <div class="row">
+       <div class="col-md-3">
+            @Html.Partial("_MemberMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bars"></i>Medallions
+                    </div>
+                    <div class="actions">
+                        <a href="" class="btn blue" ng-click="AddMedallion()">
+                            <i class="fa fa-pencil"></i>Add
+                        </a>
+                          <div class="btn-group">
+                            <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div id="tblMedallion_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label>
+                                    <input type="checkbox" checked data-column="0">Medallion #</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="1">Vehicle Assigned</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="2">Date Joined</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="3">Underserved</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="4">Insurance Surcharge (Weekly)</label>
+                                  <label>
+                                    <input type="checkbox" checked data-column="5">Balance</label>
+                                  <label>
+                                    <input type="checkbox" checked data-column="6">Insurance Sticker</label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover" id="tblMedallion" aa-data="MedallionList" paging-table>
+                        <thead>
+                            <tr>                                       
+                                <th>Medallion #
+                                </th>
+                                <th>Vehicle Assigned
+                                </th>
+                                <th>Date Joined
+                                </th>
+                                <th>Underserved
+                                </th>
+                                <th>Insurance Surcharge (Weekly)
+                                </th>
+                                <th>Collision (Weekly)
+                                </th>
+                                <th>Balance
+                                </th>                                   
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>                            
+                            <tr ng-repeat="medallionItem in MedallionList">                                    
+                                <td>{{medallionItem.MedallionNumber}}</td>
+                                <td>{{medallionItem.VehicleAssigned}}</td>
+                                <td>{{medallionItem.DateJoined}}</td>
+                                <td style="text-align: center;">
+                                    <input type="checkbox" class="group-checkable" data-set="#tblMedallion.checkboxes" ng-checked="{{medallionItem.UnderServed}}" disabled="disabled" />
+                                </td>
+                                <td>{{medallionItem.InsuranceSurcharge| currency:""}}</td>
+                                <td>{{medallionItem.Collision| currency:""}}</td>
+                                <td>{{medallionItem.Balance| currency:""}}</td>
+                                 
+                                <td>
+                                    <a href="" ng-click="EditMedallion(medallionItem)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="" ng-click="DeleteMedallion(medallionItem)">
+                                        <i class="fa fa-ban"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

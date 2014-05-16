@@ -1,0 +1,261 @@
+﻿<div class="tab-pane active" id="memberSearch">
+   
+    <br />
+    <div class="portlet box grey" ng-controller="EditContactController">  
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-reorder"></i>
+                New Contact
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form class="form-horizontal" name="frm" novalidate>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label">Picture</label>
+                            <div class="col-md-6">
+                                <div class="fileinput fileinput-new">
+                                    <div class="fileinput-preview thumbnail" style="width: 200px; height: 150px;">
+                                        <img ng-src="{{Contact.PictureContact}}" />
+                                    </div>
+                                    <div>
+                                        <span class="btn default btn-file">
+                                            <input type="file" name="..." id="divUploadImage">
+                                            Upload Image
+                                        </span>
+                                        <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">Remove
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">First Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="FirstName" ng-model="Contact.FirstName" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.FirstName.$error.required">First Name is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Last Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="LastName" ng-model="Contact.LastName" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.LastName.$error.required">Last Name is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Address 1</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="Address" ng-model="Contact.Address" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.Address.$error.required">Address is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Address 2</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="Address1" ng-model="Contact.Address1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">City</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="City" ng-model="Contact.City" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.City.$error.required">City is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">State/Zip</label>
+                            <div class="col-md-3">
+                                <select class="form-control" ng-model="Contact.State" name="State">
+                                    <option ng-repeat="state in States" ng-value="state">{{state}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" ng-model="Contact.Zip" name="Zip" input-mask="{mask:'99999'}" ng-type="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Comments</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control" name="Comments" ng-model="Contact.Comments">      </textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--Member Preferences-->
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Title</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="Title" ng-model="Contact.Title">
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Contact.AgentAssigned" name="AgentAssigned">
+                                        Agent Assigned?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Date Of Birth</label>
+                            <div class="col-md-6">
+                                <div class="input-group input-medium date date-picker">
+                                    <input type="date" class="form-control" readonly="" name="DateOfBirth" datetime-picker="mm/dd/yyyy" ng-model="Contact.DateOfBirth" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.DateOfBirth.$error.required">Date Of Birth is required
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Mobile Phone</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="MobilePhone" ng-model="Contact.MobilePhone" input-mask="{mask:'999-999-9999'}" ng-type="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Home Phone</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="HomePhone" ng-model="Contact.HomePhone" input-mask="{mask:'999-999-9999'}" ng-type="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">SSN</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="SSN" ng-model="Contact.SSN">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Chauffer Lic #</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="ChaufferLic" ng-model="Contact.ChaufferLic">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Driver Lic #</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="DriveLic" ng-model="Contact.DriveLic">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Continue Education</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="ContinueEducation" ng-model="Contact.ContinueEducation">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label"><b>Stockholder</b></label>
+                            <div class="col-md-3">
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Contact.IsStockholder" name="IsStockholder">
+                                        Stockholder?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Contact.UseThisAddresForMemberBilling" name="UseThisAddresForMemberBilling">
+                                        Use This Address For Billing?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Contact.UseThisContactAsRegisteredAgent" name="UseThisContactAsRegisteredAgent">
+                                        Use This Contact as Registered Agent?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--Member Preferences-->
+                    <div class="col-md-6">
+
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Contact.UseThisAddressForBilling" name="UseThisAddressForBilling">
+                                        Create Agent  With The Same Infomation
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Contact.UseThisAddressForBilling" name="UseThisAddressForBilling">
+                                        Deleted Agent Assigned?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="form-actions nobg fluid">
+                <div class="col-md-offset-5 col-md-9">
+                    <button type="button" class="btn btn green" ng-click="Save(frm.$invalid)">Save   </button>
+                    <button class="btn btn-default" ng-click="Cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

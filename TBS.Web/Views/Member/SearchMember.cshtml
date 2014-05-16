@@ -1,0 +1,146 @@
+﻿<!-- Table Condition Of Search-->
+
+<div   ng-controller="MemberListController">
+
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-reorder"></i>
+                Search Member
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form class="horizontal-form">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Key word</label>
+                                <input ng-model="CriterialSearch.Keyword" name="Keyword" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Search By</label>
+                                <select class="form-control" ng-model="CriterialSearch.SearchBy" name="SearchBy">
+                                    <option ng-repeat="c in ListSearchBy" value="{{c.value}}">{{c.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="role.ViewDeletedMembers">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-1 control-label"></label>
+                                <div class="checkbox-list">
+                                    <label class="checkbox-inline">
+                                        <div id="uniform-inlineCheckbox21">
+                                            <span>
+                                                <input id="inlineCheckbox21" type="checkbox" ng-model="CriterialSearch.ViewDeleted">
+                                            </span>
+                                        </div>
+                                        View Deleted Accounts?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn green" type="button" ng-click="Find();">FIND</button>
+                        <button class="btn green" type="button" ng-click="ShowAll();">SHOW ALL</button>
+                        <button class="btn green" type="button" ng-click="SearchAgent();">SEARCH AGENT</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Table Result Of Search-->
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>Member
+            </div>
+            <div class="actions">
+                <a href="" class="btn blue" ng-click="AddMember()">
+                    <i class="fa fa-pencil"></i>Add
+                </a>
+                <div class="btn-group">
+                    <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblBank_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0">Account #</label>
+                        <label>
+                            <input type="checkbox" checked data-column="1">Member Name</label>
+                        <label>
+                            <input type="checkbox" checked data-column="2">Phone</label>
+                        <label>
+                            <input type="checkbox" checked data-column="3">Status</label>
+                        <label>
+                            <input type="checkbox" checked data-column="4">Payment Status</label>
+                        <label>
+                            <input type="checkbox" checked data-column="5">Payment Status</label>                      
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblBank" aa-data="SearchMemberList" paging-table>
+                <thead>
+                    <tr>                         
+                        <th>Account #
+                        </th>
+                        <th>Member Name
+                        </th>
+                        <th>Phone
+                        </th>
+                        <th>Status
+                        </th>
+                        <th>Payment Status
+                        </th>
+                        <th>Payment Due Date
+                        </th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+                <tbody>                    
+                    <tr ng-repeat="searchmember in SearchMemberList"  ng-if="(role.ViewDeletedMembers && searchmember.Member.IsDeleted)||(!searchmember.Member.IsDeleted)">
+                       
+                        <td>{{searchmember.AccountNumber}}
+                        </td>
+                        <td>{{searchmember.MemberName}}
+                        </td>
+                        <td>{{searchmember.Phone}}
+                        </td>
+                        <td ng-show="!searchmember.Member.IsDeleted">{{searchmember.Status}}
+                        </td>
+                        <td ng-show="searchmember.Member.IsDeleted">Deleted
+                        </td>
+                        <td>{{searchmember.PreferPayment}}
+                        </td>
+                        <td>{{searchmember.PaymentDueDate}}
+                        </td>
+                        <td align="center">
+                            <a href="" ng-click="EditMember(searchmember.Member)" ng-show="!searchmember.Member.IsDeleted">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="" ng-click="DeleteMember(searchmember.Member);" ng-show="!searchmember.Member.IsDeleted"><i class="fa fa-ban"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init(); // initlayout and core plugins                          
+    });
+
+</script>

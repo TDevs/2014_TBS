@@ -1,0 +1,87 @@
+﻿<link href="/assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" />
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/ngmember")
+@Scripts.Render("~/bundles/ngcontact")
+@Scripts.Render("~/bundles/ngmedallion")
+@Scripts.Render("~/bundles/ngagent")
+@Scripts.Render("~/bundles/ngVehicle")
+@Scripts.Render("~/bundles/standarddue")
+@Scripts.Render("~/bundles/ngcashiering")
+
+<div ng-controller="MemberController">
+    <form class="row" name="frmMainSearch" novalidate>
+        <div class="form-group">
+            <div class="col-md-4">
+                <div class="input-group input-medium">
+                    <input class="form-control" type="text" placeholder="Account Number"
+                        ng-model="AccountNumber" typeahead="item for item in MemberList | filter:$viewValue | limitTo:8"
+                        name="AccountNumber" required>
+                    <span class="input-group-btn">
+                        <button class="btn blue" type="button" ng-click="Go(frmMainSearch.$invalid)">Go!</button>
+                    </span>
+                </div>
+                <small style="color: #ff0000">
+                    <span style="color: #ff0000" ng-show="IsMainSubmited && frmMainSearch.AccountNumber.$error.required">Account Number is required.</span>
+                </small>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group input-medium">
+                    <input class="form-control" type="text" placeholder="Member Name" ng-model="MemberName">
+                </div>
+            </div>
+        </div>
+    </form>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabbable tabbable-custom boxless tabbable-reversed">
+                <ul class="nav nav-tabs">
+                    <li id="search">
+                        <a href="#/Member/SearchMember" data-toggle="tab" data-target="#search" ng-click="TabSearch(event)">Search</a>
+                    </li>
+                    <li id="info">
+                        <a href="#/Member/EditInfo" data-toggle="tab" data-target="#info" ng-click="TabMemberInfo()">Member info
+                        </a>
+                    </li>
+                    <li id="cash" ng-show="role.ViewMemberCashiering">
+                        <a href="#/Cashiering/AccountSummary" data-toggle="tab" data-target="#cash" ng-click="TabCashiering()">Cashiering
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="search" class="tab-pane active">
+                        <div ng-view></div>
+                    </div>
+                    <div id="info" class="tab-pane">
+                      @*  <div ng-view></div>*@
+                    </div>
+                    <div id="cash" class="tab-pane">
+                        @*<div ng-view></div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        var id = location.hash.substr(1);
+        if (id == '/Member/Search') {
+            $("#search").attr("class", "active");
+            $("#info").attr("class", "");
+            $("#cash").attr("class", "");
+        }
+        else {
+            $("#search").attr("class", "active");
+            $("#info").attr("class", "");
+            $("#cash").attr("class", "");
+            location.href = '#/Member/Search';
+        }
+    });
+</script>
+

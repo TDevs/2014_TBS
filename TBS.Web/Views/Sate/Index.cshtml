@@ -1,0 +1,49 @@
+﻿
+@Scripts.Render("~/bundles/ngsate")
+<div class="row" ng-controller="SateListController">
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>Sates
+            </div>
+            <div class="actions">
+                <a href="#" class="btn blue" ng-click="AddSate()">
+                    <i class="fa fa-pencil"></i>Add
+                </a>
+                 <div class="btn-group">
+                    <a class="btn default" href="#" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblSate_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0" />State Name</label>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblSate" aa-data="SateList" paging-table>
+                <thead>
+                    <tr>                         
+                        <th>
+                            Sate Name
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sateItem in SateList">                         
+                        <td>{{sateItem.Name}}</td>
+                        <td>
+                            <a href="#" ng-click="EditSate(sateItem)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="#" ng-click="DeleteSate(sateItem)">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

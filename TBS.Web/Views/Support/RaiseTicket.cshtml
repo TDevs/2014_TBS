@@ -1,0 +1,37 @@
+﻿@Scripts.Render("~/bundles/ngTicket")
+<form class="row" name="frmCreateRaiseTicket" novalidate ng-controller="RaiseTicketController">
+    <div class="col-md-12">
+        <div class="portlet box">
+            <div class="form-horizontal">
+                <div class="caption">
+                    <i class="fa fa-bars"></i>Ticket Information
+                </div>
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Title</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="Title" required ng-model="ticket.Title">
+                            <small style="color: #ff0000">
+                                <span class="error" ng-show="IsSubmitted && frmCreateRaiseTicket.Title.$error.required">Title is required.</span>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Message</label>
+                        <div class="col-md-10">
+                            <textarea data-ng-model="Message" data-ck-editor></textarea>
+                            <small style="color: #ff0000">
+                                <span class="error" ng-show="IsSubmitted && frmCreateRaiseTicket.Message.$error.required">Message is required.</span>
+                            </small>
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="button" class="btn blue btn-lg" ng-click="PostTicket(frmCreateRaiseTicket.$invalid)">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

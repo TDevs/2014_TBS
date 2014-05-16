@@ -1,0 +1,185 @@
+﻿<div id="large" tabindex="-1" role="dialog" aria-hidden="true">
+    <form class="form-horizontal" id="frmCreateRole" novalidate>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-full">
+                <div class="modal-header">
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-reorder"></i> Create new Role
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Role Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" placeholder="Enter Role Name" name="Name" class="form-control" ng-model="role.Name">
+                                        <small style="color:#ff0000">
+                                            <span class="error" ng-show="IsSubmitted && frmCreateRole.Name.$error.required">Role Name is required.</span>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Description</label>
+                                    <div class="col-md-9">
+                                        <textarea rows="3" class="form-control" ng-model="role.Description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Predefined</label>
+                                    <div class="col-md-9">
+                                        <textarea rows="3" class="form-control" ng-model="role.Predefined"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Dashboard</label>
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="role.AllowDashboard"> Allow Dasboard
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Account Settings</label>
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="role.AccountCanEdit"> Edit account settings
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.AccountCanView"> View account settings
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Agents</label>
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="role.AgentCanCreate"> Create new Agent
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Members</label>
+                                        <div class="col-md-9">
+                                            <div class="checkbox-list">
+                                                <label>
+                                                    <input type="checkbox" ng-model="role.ViewMemberData"> View Members Data
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" ng-model="role.EditMemberData"> Edit Member Data
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" ng-model="role.DeleteMemberData"> Delete Member Data
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" ng-model="role.ViewMemberCashiering"> View Member Cashiering
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" ng-model="role.BillOutMember"> Bill Out Member
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" ng-model="role.ViewDeletedMembers"> View Deleted Members
+                                                </label>
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">References</label>
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="role.ReferenceCanEdit"> Edit references
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Reports</label>
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="role.ReportCanMakeReport"> Make reports
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.ReportCanMakeEndOfDayTrans"> Make end of day transactions report
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Roles</label>
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="role.RoleCanViewList"> View role list
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.RoleCanEdit"> Edit role
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.RoleCanCreate"> Create mew role
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.RoleCanDelete"> Delete role
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Users</label>
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="role.UserCanViewList"> View user list
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.UserCanEdit"> Edit user
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.UserCanCreate"> Create mew user
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="role.UserCanDelete"> Delete user
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-actions fluid">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn green" type="button" ng-click="Save(frmCreateRole.$invalid)">Save</button>
+                            <button class="btn default" type="button" ng-click="Cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </form>
+</div>

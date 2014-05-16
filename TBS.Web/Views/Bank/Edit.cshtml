@@ -1,0 +1,123 @@
+﻿<form class="form-horizontal" name="frmEditBank" novalidate>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Edit Bank</h4>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Name: </label>
+            <div class="col-md-8">
+                <div class="input-icon right">
+                    <input ng-model="bank.Name" name="Name" class="form-control" required />
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted && frmEditBank.Name.$error.required">Name is required.</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Address: </label>
+            <div class="col-md-8">
+                <div class="input-icon right">
+                    <input ng-model="bank.Address" name="Address" class="form-control" required />
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted &&frmEditBank.Address.$error.required">Address is required.</span>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Addess1: </label>
+            <div class="col-md-8">
+                <input ng-model="bank.Address1" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">City: </label>
+            <div class="col-md-8">
+                <input ng-model="bank.City" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">State: </label>
+            <div class="col-md-8">
+                <select ng-model="bank.State" name="State" class="form-control" required>
+                    <option ng-repeat="s in state" ng-value="s">{{s}}</option>
+                </select>
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted &&frmEditBank.State.$error.required">State is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Zip: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_zip1" ng-model="bank.Zip" name="Zip" class="form-control" required input-mask="{mask:'99999'}" ng-type="phone" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted &&frmEditBank.Zip.$error.required">Zip is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Comment: </label>
+            <div class="col-md-8">
+                <textarea ng-model="bank.Comment" class="form-control" rows="7" cols="25"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Phone 1: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_phone1" class="form-control" ng-model="bank.Phone1" name="Phone1" input-mask="{mask:'999-999-9999'}" ng-type="phone" required />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted && frmEditBank.Phone1.$error.required">Phone 1 is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Phone 2: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_phone2" class="form-control" ng-model="bank.Phone2" input-mask="{mask:'999-999-9999'}" ng-type="phone" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Fax: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_fax1" class="form-control" ng-model="bank.Fax" name="Fax" input-mask="{mask:'999-999-9999'}" ng-type="phone" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted && frmEditBank.Fax.$error.required">Fax is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Email: </label>
+            <div class="col-md-8">
+                <input type="email" name="Email" ng-model="bank.Email" class="form-control" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted && frmEditBank.Email.$error.email">Email Invalid</span>
+                </small>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" value="Save" class="btn btn-default btn green" ng-click="Save(frmEditBank.$invalid)" />
+            <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+        </div>
+    </div>
+
+</form>

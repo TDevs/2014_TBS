@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/nguniversalagent")
+<div class="row" ng-controller="UniversalAgentController">
+    <div class="portlet box grey">
+        <!-- Table Result Of Search-->
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>Universal Agent Records
+            </div>
+            <div class="actions">
+                <a href="" class="btn blue" ng-click="Refresh()">
+                    <i class="fa fa-pencil"></i>Refresh
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblBank">
+                <thead>
+                    <tr>
+                         
+                        <th>License Number
+                        </th>
+                        
+                        <th>Status
+                        </th>
+                        <th>Status Date
+                        </th>
+                        <th>Driver Type
+                        </th>
+                        <th>License Type
+                        </th>
+                       
+                        <th>Name
+                        </th>
+                        <th>Sex
+                        </th>
+                        <th>ChaufferCity
+                        </th>
+                        <th>ChaufferState</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-show="UniversalAgentList.length<=0">
+                        <td colspan="12" style="text-align: center">No Records </td>
+                    </tr>
+                    <tr ng-repeat="agent in UniversalAgentList">
+                        
+                        <td>{{agent.LicenseNumber}}
+                        </td>                       
+                        <td>{{agent.Status}}
+                        </td>
+                        <td>{{agent.StatusDate}}
+                        </td>
+                        <td>{{agent.DriverType}}
+                        </td>
+                        <td>{{agent.LicenseType}}
+                        </td>                       
+                        <td>{{agent.Name}}
+                        </td>
+                        <td>{{agent.Sex}}
+                        </td>
+                        <td>{{agent.ChaufferCity}}
+                        </td>
+                        <td>{{agent.ChaufferState}} 
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

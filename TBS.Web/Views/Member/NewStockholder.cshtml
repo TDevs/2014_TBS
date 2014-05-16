@@ -1,0 +1,42 @@
+﻿<form class="form-horizontal" name="frmStockholder" novalidate>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Create New Stockholder</h4>
+    </div>
+    <div class="modal-body">         
+        <div class="form-group">
+            <label class="control-label col-md-4">Stockholder Name: </label>
+            <div class="col-md-7">
+                <div class="input-icon right">
+                    <input ng-model="stockholder.StockholderName" name="StockholderName" class="form-control" required />
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted && frmStockholder.StockholderName.$error.required">Stockholder is required.</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">Percentage: </label>
+            <div class="col-md-7">
+                <div class="input-icon right">
+                    <input type="text" ng-model="stockholder.Percentage" name="Percentage" class="form-control" required  input-mask="{mask:'99.99'}"  ng-type="decimal" />
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted &&frmStockholder.Percentage.$error.required">Percentage is required.</span>
+                    </small>
+                  @*  <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted && frmStockholder.Percentage.$error.percentInput  && !frmStockholder.Percentage.$error.required">Percentage is not more than 100.</span>
+                    </small>*@
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" value="Save" class="btn btn-default btn green" ng-click="Save(frmStockholder.$invalid)" />
+            <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+        </div>
+    </div>
+
+</form>

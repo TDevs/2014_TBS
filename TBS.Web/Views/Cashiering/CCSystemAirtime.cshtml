@@ -1,0 +1,65 @@
+﻿<div class="tab-pane active">
+    <div class="row" ng-controller="CashieringController">
+        <div class="col-md-3">
+            @Html.Partial("_CashieringMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey" ng-controller="CCSystemAirtimeController">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-reorder"></i>
+                        CC System Airtime
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form name="frm" novalidate class="form-horizontal">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <!--Content-->
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Medallion Number</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="MedallionId" ng-model="CCSystemAirtime.MedallionId" ng-change="MedallionChange(CCSystemAirtime.MedallionId)" required>
+                                            <option ng-repeat="medallion in MedallionList" value="{{medallion.MedallionId}}">{{medallion.MedallionNumber}}</option>
+                                        </select>
+                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.MedallionId.$error.required">Medallion Number is required
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Airtime (monthly)</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="WeeklyPayment" ng-model="CCSystemAirtime.Airtime" input-mask="{mask:9999.99}" ng-type="decimal" required>
+                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.WeeklyPayment.$error.required">Airtime  is required
+                                        </span>
+                                    </div>
+                                </div>
+                                <!--End Content-->
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">CC Vendor</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="CCVendorId" ng-model="CCSystemAirtime.CCVendorId" required ng-change="VendorChange(CCSystemAirtime.CCVendorId)">
+                                            <option ng-repeat="ccvender in CCVendorList" value="{{ccvender.Id}}">{{ccvender.Name}}</option>
+                                        </select>
+                                        <span style="color: #ff0000" ng-show="IsSubmitted && frm.CCVendorId.$error.required">Vendor  is required
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-actions nobg fluid">
+                        <div class="col-md-offset-5 col-md-9">
+                            <button type="button" class="btn btn green" ng-click="Save(frm.$invalid)">Save   </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

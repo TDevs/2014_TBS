@@ -1,0 +1,85 @@
+﻿<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular-sanitize.js"></script>
+@Scripts.Render("~/bundles/tbssupport")
+<div class="row" ng-controller="TBSSupportListController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">
+                    Ticket Listing
+                </div>
+            </div>
+            <div class="portlet-body">
+                <!-- Cho ni nen dung ng-repeat de lay duoc gia tri chon cho filter -->
+                <div class="radio-list">
+                    <table>
+                        <tr>
+                            <td>
+                                <label>
+                                    <input type="radio" name="optionsRadios" ng-model="InReView" ng-value="InReView" ng-change="ChangeToReview()">
+                                    In Review
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="optionsRadios" ng-model="Close" ng-value="Close" ng-change="ChangeToClose()">
+                                    Closed
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="optionsRadios" ng-model="Open" ng-value="Open" ng-change="ChangeToOpen()">
+                                    Open
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table class="table table-striped table-bordered table-hover" id="tblTBSSupport">
+                    <thead>
+                        <tr>
+                            <th style="width: 8px;">
+                                <input type="checkbox" class="group-checkable" data-set="#tblTBSSupport.checkboxes" />
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Message
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="tbsSupportItem in TBSSupportList">
+                            <th style="width: 8px;">
+                                <input type="checkbox" class="group-checkable" data-set="#tblTBSSupport.checkboxes" />
+                            </th>
+                            <td>
+                                {{tbsSupportItem.Title}}
+                            </td>
+                            <td>
+                                @*{{tbsSupportItem.Message}}*@                                
+                                <p ng-bind-html="myHTML"></p>
+                            </td>
+                            <td>
+                                {{tbsSupportItem.Status}}
+                            </td>
+                            <td align="center">
+                                <a href="#" title="Review" ng-click="ReviewTBSSupport(tbsSupportItem)">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="#" title="Close" ng-click="CloseTBSSupport(tbsSupportItem)">
+                                    <i class="fa fa-check"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

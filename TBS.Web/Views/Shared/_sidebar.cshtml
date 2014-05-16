@@ -1,0 +1,343 @@
+﻿@Scripts.Render("~/bundles/ngfiltermember")
+@{
+    string CssMember = ViewBag.CssMember;
+    string CssMemberSelected = ViewBag.CssMemberSelected;
+
+    string CssSupport = ViewBag.CssSupport;
+    string CssSupportelected = ViewBag.CssSupportelected;
+}
+<div class="page-sidebar-wrapper">
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- add "navbar-no-scroll" class to disable the scrolling of the sidebar menu -->
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+            <li class="sidebar-toggler-wrapper">
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <div class="sidebar-toggler hidden-phone">
+                </div>
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            </li>
+            <!-- DASHBOARD SECTION-->
+            <li class="@ViewBag.HomeActive">
+                <a href="#" ng-show="role.AllowDashboard">
+                    <i class="fa fa-home"></i>
+                    <span class="title">
+                        Dashboard
+                    </span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+
+            <li class="@ViewBag.HomeActive">
+                <a href="#" ng-show="role.AllowDashboard==false">
+                    <i class="fa fa-home"></i>
+                    <span class="title">
+                        Home
+                    </span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+
+            <!-- END DASHBOARD SECTION-->
+            <div class="sidebar-search-wrapper" ng-show="role.ViewMemberData || role.AgentCanCreate">
+                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                <form class="sidebar-search" ng-controller="FilterMemberController">
+                    <div class="form-container">
+                        <div class="input-box">
+                            <input type="text" placeholder="Search..." ng-model="Search" name="Search" ng-keyup="filterMember()" />
+                            <span class="submit" />
+                        </div>
+                    </div>
+                </form>
+                <!-- END RESPONSIVE QUICK SEARCH FORM -->
+            </div>
+            <!--MEMBER -->
+            <li class="@ViewBag.MemberActive" ng-show="role.ViewMemberData">
+                <a href="javascript:;">
+                    <i class="fa fa-group"></i>
+                    <span class="title">
+                        Member
+                    </span>
+                    <span class="arrow "></span>
+                    <span class=@CssMemberSelected></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/Member/Search">
+                            <i class="fa fa-info"></i>
+                            Search
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Member/Search/#/Member/NewInfo">
+                            <i class="fa fa-user-md"></i>
+                            Member Info
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Member/Search/#/Member/Vehicle">
+                            <i class="fa fa-tags"></i>Cashiering
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Member/Search/#/Member/StandardDueListing">
+                            <i class="fa fa-tags"></i>Standard Dues
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Member/Search/#/Member/MedallionListing">
+                            <i class="fa fa-tags"></i>Medallions
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-show="role.AgentCanCreate" class="@ViewBag.AgentActive">
+                <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#">
+                    Agents<i class="fa fa-angle-down"></i>
+                    <span class="arrow "></span>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/Agent/Search#Agent/Search">
+                            Search
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Agent Info
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Member/UniversalAgentRecord">
+                            Universal Agent Record
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Member/RTAUpload">
+                            RTA
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Member/MobilityUpload">
+                            Mobility
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-show="role.ReportCanMakeReport" class="@ViewBag.ReportActive">
+                <a href="javascript:;">
+                    <i class="fa fa-dollar"></i>
+                    <span class="title">
+                        Reports
+                    </span>
+                    <span class="arrow "></span>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">
+                            8 General Purpose reports
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/Report/PaymemtHistoryReport">
+                                    Payment History Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/PaymentStatusReport">
+                                    Payment Status Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/MemberInformationReport">
+                                    Payment Information Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/MemberContactListReport">
+                                    Member Contact List Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/AssociationMemberSummaryReport">
+                                    Association Member Summary Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/AssociationFinancialReport">
+                                    Association Financial Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/PaymentHistoryVendorReport">
+                                    Payment History (Vendor) Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/VehicleReport">
+                                    Vehicle Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/LateReport">
+                                    Late Report
+                                </a>
+                            </li>
+                            <li ng-show="role.ReportCanMakeEndOfDayTrans">
+                                <a href="/Report/EndOfDateTransactionReport">
+                                    End Of Date Transactions Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report/OutstandingBalances">
+                                    Outstanding Balances
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            2 Custom Reports
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Data Exports to Excel
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-show="role.ReferenceCanEdit || role.UserCanViewList || role.RoleCanViewList || role.AccountCanView" class="@ViewBag.SettingActive">
+                <a href="javascript:;">
+                    <i class="fa fa-cog"></i>
+                    <span class="title">
+                        Settings
+                    </span>
+                    <span class="arrow "></span>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+
+                    <li class="dropdown-submenu" ng-show="role.ReferenceCanEdit">
+                        <a href="javascript:;">
+                            References
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/bank">
+                                    Bank
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ChargeBackType">
+                                    Charge Back Type
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/CorporateClient">
+                                    Corporate Client
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ModelYearInsurance">
+                                    Model Year Insurance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/VehicleFeature">
+                                    Vehicle Features
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/VehicleMake">
+                                    Vehicle Makes
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/VehicleModel">
+                                    Vehicle Model
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/WerkShop/Index">
+                                    Werk Shops
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Vender/Index">
+                                    CC Vendors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/MeterManufacturer/Index">
+                                    Meter Manufacturers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Sate/Index">
+                                    Sates
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li ng-show="role.UserCanViewList">
+                        <a href="/User">
+                            Users
+                        </a>
+                    </li>
+                    <li ng-show="role.RoleCanViewList">
+                        <a href="/Role">
+                            Roles
+                        </a>
+                    </li>
+                    <li ng-show="role.AccountCanView">
+                        <a href="/Company/Index">
+                            Association Settings
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="@ViewBag.SupportActive">
+                <a href="javascript:;">
+                    <i class="fa fa-group"></i>
+                    <span class="title">
+                        Support
+                    </span>
+                    <span class="arrow "></span>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="/Support/FAQs">FAQs</a>
+                    </li>
+                    <li ng-show="role.IsAdmin">
+                        <a href="/Support/ListFQAs">Manage FAQs</a>
+                    </li>
+                    <li ng-show="role.IsAdmin">
+                        <a href="/Support/ListTutorials">Manage Tutorials</a>
+                    </li>
+                    <li>
+                        <a href="/Support/Tutorials">Basic Tutorials</a>
+                    </li>
+                    <li>
+                        <a href="/Support/RaiseTicket">Raise Ticket</a>
+                    </li>
+                    <li>
+                        <a href="/Support/Ticket#/Support/ViewTicketList">View Tickets</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+</div>

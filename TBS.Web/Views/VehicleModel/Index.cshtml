@@ -1,0 +1,52 @@
+﻿@Scripts.Render("~/bundles/ngvehiclemodel")
+<div class="row" ng-controller="VehicleModelListController">
+   <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>Vehicle Models
+            </div>
+            <div class="actions">
+                <a href="#" class="btn blue" ng-click="AddVehicleModel()">
+                    <i class="fa fa-pencil"></i>Add
+                </a>
+                 <div class="btn-group">
+                    <a class="btn default" href="#" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblVehicleModel_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0">Vehicle Model Name</label>       
+                         <label>
+                            <input type="checkbox" checked data-column="1">Make</label>                                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblVehicleModel"  aa-data="VehicleModelList" paging-table>
+                <thead>
+                    <tr>                            
+                        <th>Vehicle Model Name
+                        </th>
+                        <th>Make
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="vehicleModelItem in VehicleModelList">
+                        <td>{{vehicleModelItem.Name}}</td>                        
+                        <td>{{vehicleModelItem.VehicleMakeName}}</td>
+                        <td>
+                            <a href="#" ng-click="EditVehicleModel(vehicleModelItem)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="#" ng-click="DeleteVehicleModel(vehicleModelItem)">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

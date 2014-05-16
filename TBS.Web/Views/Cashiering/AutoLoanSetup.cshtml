@@ -1,0 +1,161 @@
+﻿<div class="tab-pane active">
+    <div class="row" ng-controller="CashieringController">
+        <div class="col-md-3">
+            @Html.Partial("_CashieringMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey" ng-controller="AutoLoanSetupController">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-reorder"></i>
+                        Auto Loan Setup
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form name="frm" novalidate class="form-horizontal">
+                        <br />
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Medallion Number</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="MedallionId" ng-model="AutoLoanSetup.MedallionId" ng-change="MedallionChange(AutoLoanSetup.MedallionId)" required>
+                                        <option ng-repeat="medallion in MedallionList" value="{{medallion.MedallionId}}">{{medallion.MedallionNumber}}</option>
+                                    </select>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.MedallionId.$error.required">Medallion Number is required
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Loan Amount</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="LoanAmount" ng-model="AutoLoanSetup.LoanAmount" input-mask="{mask:9999.99}" ng-type="decimal" required>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.LoanAmount.$error.required">Loan Amount is required
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Start Date</label>
+                                <div class="col-md-6">
+                                    <div class="input-group input-medium date date-picker">
+                                        <input type="text" class="form-control" readonly="" name="StartDate" datetime-picker="mm/dd/yyyy" ng-model="AutoLoanSetup.StartDate" required>
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.StartDate.$error.required">Start Date is required
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">End Date</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AutoLoanSetup.EndDate">{{AutoLoanSetup.EndDate}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Interest Rate (%)</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="InterestRate" ng-model="AutoLoanSetup.InterestRate" input-mask="{mask:999}" ng-type="decimal" required>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.InterestRate.$error.required">Interest Rate is required
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Loan Term</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="LoanTerm" ng-model="AutoLoanSetup.LoanTerm" input-mask="{mask:9999.99}" ng-type="decimal" required>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.LoanTerm.$error.required">Loan Term is required
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <select ng-model="AutoLoanSetup.LoanTermBy" name="LoanTermBy" class="form-control" required>
+                                        <option value="Months">Months</option>
+                                    </select>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.LoanTermBy.$error.required">Months is required
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <!--End Content-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Caculated Monthly Payment</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AutoLoanSetup.CalculatedMonthlyPayment">{{AutoLoanSetup.CalculatedMonthlyPayment}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Total Paid</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AutoLoanSetup.TotalPaid">{{AutoLoanSetup.TotalPaid}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Total Principal Paid</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AutoLoanSetup.TotalPrincipalPaid">{{AutoLoanSetup.TotalPrincipalPaid}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Total Interested Paid</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AutoLoanSetup.TotalInterestPaid">{{AutoLoanSetup.TotalInterestPaid}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Current Balance</label>
+                                <div class="col-md-6">
+                                    <label class="control-label" ng-model="AutoLoanSetup.CurrentBalance">{{AutoLoanSetup.CurrentBalance}}</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Bank</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="BankId" ng-model="AutoLoanSetup.BankId" required>
+                                        <option ng-repeat="bank in BankList" value="{{bank.Id}}">{{bank.Name}}</option>
+                                    </select>
+                                    <span style="color: #ff0000" ng-show="IsSubmitted && frm.BankId.$error.required">Bank  is required
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Comments</label>
+                                <div class="col-md-6">
+                                    <textarea type="text" class="form-control" name="Comments" ng-model="AutoLoanSetup.Comments"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Status</label>
+                                <div class="col-md-6">
+                                    <label class="control-label">{{AutoLoanSetup.Status}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-actions nobg fluid">
+                        <div class="col-md-offset-5 col-md-9">
+                            <button type="button" class="btn btn green" ng-click="Save(frm.$invalid)">Save   </button>
+                            <button type="button" class="btn btn green" ng-click="Recalculate(frm.$invalid)">Recalculate </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

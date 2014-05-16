@@ -1,0 +1,234 @@
+﻿@model List<TDevs.Domain.Member>
+<div class="tab-pane active">
+    <div class="row" ng-controller="PaymentStatusReportController">
+        <form name="frm" novalidate>
+            <div class="col-md-12">
+                <h3 class="form-section">Payment Status Report</h3>
+            </div>
+            <div class="col-md-12">
+                <div class="portlet box">
+                    <div class="portlet-body form">
+                        <div class="form-horizontal">
+                            <div class="form-body">
+                                <!--Content-->
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Member Status</label>
+                                    <div class="col-md-6 radio-list">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" value="Active" class="statusRadio" checked="checked">
+                                                        Active
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" value="Deleted" class="statusRadio">
+                                                        Deleted
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" value="All" class="statusRadio">
+                                                        All
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Member</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="MemberId" id="memberIdSelect">
+                                            <option class="memberIdOption" value="-1">--Select member--</option>
+                                            @if (Model != null && Model.Any())
+                                            {
+                                                foreach (var member in Model)
+                                                {
+                                                    <option class="memberIdOption" value="@member.Id">@member.Name</option>
+                                                }                          
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Medallion</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="MedallionId" id="medallionIdSelect">
+                                        </select>
+                                    </div>
+                                </div>
+                                <fieldset>
+                                    <legend>Payment Types</legend>
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <input id="allPaymentTypes" type="button" class="btn blue btn-lg" name="All" value="All" /><br/><br/>
+                                            <input id="nonePaymentTypes" type="button" class="btn blue btn-lg" name="None" value="None" />
+                                        </div>
+                                        <div class="col-md-6 checkbox-list">
+                                            <ul class="list-unstyled" id="listPaymentTypes">
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" class="chk">
+                                                        Balance
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" class="chk">
+                                                        Total Payment Due
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" class="chk" id="Loan">
+                                                        Loans
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk" id="Medallion">
+                                                                Medallion
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk">
+                                                                Auto
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" class="chk">
+                                                        Deposits
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk">
+                                                                Radio Deposit
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk">
+                                                                Deposit
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk">
+                                                                Insurance Deposit
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" class="chk">
+                                                        CCSystem
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk">
+                                                                Werks / Accounts Receivable
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk">
+                                                                Werks
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" class="chk">
+                                                                Accounts
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-7">
+            <div class="portlet box">
+                <div class="portlet-body ">
+                    <div class="form-horizontal">
+                        <div class="clearfix">
+                            <div class="col-md-offset-8 col-md-7">
+                                <button type="button" class="btn blue btn-lg" ng-click="Save(frm.$invalid)">Generate Report </button>
+                                <button type="button" class="btn blue btn-lg">Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $('input[type=radio][name=optionsRadios]').change(function () {
+            $("#medallionIdSelect").html('');
+            var value = $(this).val();
+            $.ajax({
+                url: "/Report/AjaxGetMemBerByStatus",
+                data: { status: value },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                cache: false,
+            }).success(function (data) {
+                $("#memberIdSelect").html(data);
+            });
+        });
+
+        $("#memberIdSelect").change(function () {
+            var memberId = $(this).val();
+            $.ajax({
+                url: "/Report/AjaxGetMedallionByMemberId",
+                data: { memberId: memberId },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                cache: false,
+            }).success(function (data) {
+                $("#medallionIdSelect").html(data);
+            });
+        });
+
+        $("#allPaymentTypes").click(function () {
+            checkAll(true);
+        });
+        
+        $("#nonePaymentTypes").click(function () {
+            checkAll(false);
+        });
+        
+        function checkAll(all) {
+            $('#listPaymentTypes span').each(function () {
+                var $span = $(this);
+                if (all) {
+                    $($span).addClass('checked');
+                    $('.chk').attr('checked', true);
+                } else {
+                    $($span).removeClass('checked');
+                    $('.chk').attr('checked', false);
+                }
+            });
+        }
+    </script>
+}

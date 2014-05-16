@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Tutorial";
+}
+@Scripts.Render("~/bundles/ngTutorial")
+<div class="row" ng-controller="TutorialsController">
+    <div class="col-md-12">
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-users"></i>Tutorials
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="tab-content">
+                    <div id="tab_1" class="tab-pane active">
+                        <div id="accordion1" class="panel-group">
+                            <div class="panel panel-default" ng-repeat="tutorial in Tutorials">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#{{tutorial.Id}}" href="#{{tutorial.Id}}">
+                                            {{tutorial.Title}}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="{{tutorial.Id}" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <span ng-bind-html="tutorial.Content"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

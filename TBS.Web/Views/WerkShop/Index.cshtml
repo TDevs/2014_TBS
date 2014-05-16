@@ -1,0 +1,80 @@
+﻿@Scripts.Render("~/bundles/ngwerkshop")
+<div class="row" ng-controller="WerkShopListController">
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>WerkShops
+            </div>
+            <div class="actions">
+                <a href="#" class="btn blue" ng-click="AddWerkShop()">
+                    <i class="fa fa-pencil"></i>Add
+                </a>
+                <div class="btn-group">
+                    <a class="btn default" href="#" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblWerkShop_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0">Werk Shop Name</label>
+                        <label>
+                            <input type="checkbox" checked data-column="1">City</label>
+                        <label>
+                            <input type="checkbox" checked data-column="2">State</label>
+
+                        <label>
+                            <input type="checkbox" checked data-column="3">Phone 1</label>
+                        <label>
+                            <input type="checkbox" checked data-column="4">Fax</label>
+                        <label>
+                            <input type="checkbox" checked data-column="5">Email</label>     
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblWerkShop" aa-data="WerkShopList" paging-table>
+                <thead>
+                    <tr>                              
+                        <th>Werk Shop Name
+                        </th>
+                        <th>City
+                        </th>
+                        <th>State
+                        </th>
+                        <th>Phone 1
+                        </th>
+                        <th>Fax
+                        </th>
+                        <th>Email
+                        </th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-repeat="werkshop in WerkShopList">                       
+                        <td>{{werkshop.Name}}
+                        </td>
+                        <td>{{werkshop.City}}
+                        </td>
+                        <td>{{werkshop.State}}
+                        </td>
+                        <td>{{werkshop.Phone1}}
+                        </td>
+                        <td>{{werkshop.Fax}}
+                        </td>
+                        <td>{{werkshop.Email}}
+                        </td>
+                        <td>
+                            <a href="#" ng-click="EditWerkShop(werkshop)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="#" ng-click="DeleteWerkShop(werkshop);"><i class="fa fa-ban"></i></a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

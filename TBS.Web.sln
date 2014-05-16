@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBS.Web", "TBS.Web\TBS.Web.csproj", "{8F194D5C-1C16-4F85-AC41-FE8671042273}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{6055DDD2-A8D6-4DFC-9B5D-13D20FE7A806}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6AC276E7-850C-4BAC-8922-6D30432310A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oas.Core", "Modules\Oas.Core\Oas.Core.csproj", "{757B6A95-C5F2-400E-9E87-2A7BCF66D184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oas.Domain", "Modules\Oas.Domain\Oas.Domain.csproj", "{F153A43F-332A-448A-AC41-45CB717514E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oas.Infrastructure", "Modules\Oas.Infrastructure\Oas.Infrastructure.csproj", "{090E0E44-FE79-4856-BB5A-CFC6A173576D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oas.Service", "Modules\Oas.Service\Oas.Service.csproj", "{A19142F9-0FDD-403F-A776-E3F7D6FC3E59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E5312137-DB76-43AC-9730-D34ECB5AF97A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F194D5C-1C16-4F85-AC41-FE8671042273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F194D5C-1C16-4F85-AC41-FE8671042273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F194D5C-1C16-4F85-AC41-FE8671042273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F194D5C-1C16-4F85-AC41-FE8671042273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{757B6A95-C5F2-400E-9E87-2A7BCF66D184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757B6A95-C5F2-400E-9E87-2A7BCF66D184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757B6A95-C5F2-400E-9E87-2A7BCF66D184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757B6A95-C5F2-400E-9E87-2A7BCF66D184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F153A43F-332A-448A-AC41-45CB717514E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F153A43F-332A-448A-AC41-45CB717514E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F153A43F-332A-448A-AC41-45CB717514E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F153A43F-332A-448A-AC41-45CB717514E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{090E0E44-FE79-4856-BB5A-CFC6A173576D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{090E0E44-FE79-4856-BB5A-CFC6A173576D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{090E0E44-FE79-4856-BB5A-CFC6A173576D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{090E0E44-FE79-4856-BB5A-CFC6A173576D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19142F9-0FDD-403F-A776-E3F7D6FC3E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19142F9-0FDD-403F-A776-E3F7D6FC3E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19142F9-0FDD-403F-A776-E3F7D6FC3E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19142F9-0FDD-403F-A776-E3F7D6FC3E59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8F194D5C-1C16-4F85-AC41-FE8671042273} = {6055DDD2-A8D6-4DFC-9B5D-13D20FE7A806}
+		{757B6A95-C5F2-400E-9E87-2A7BCF66D184} = {6AC276E7-850C-4BAC-8922-6D30432310A3}
+		{F153A43F-332A-448A-AC41-45CB717514E6} = {6AC276E7-850C-4BAC-8922-6D30432310A3}
+		{090E0E44-FE79-4856-BB5A-CFC6A173576D} = {6AC276E7-850C-4BAC-8922-6D30432310A3}
+		{A19142F9-0FDD-403F-A776-E3F7D6FC3E59} = {6AC276E7-850C-4BAC-8922-6D30432310A3}
+	EndGlobalSection
+EndGlobal

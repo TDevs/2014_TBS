@@ -1,0 +1,63 @@
+﻿<ul class="ver-inline-menu tabbable margin-bottom-10">
+
+    <li class="@ViewBag.HighLightInfo">
+
+        <a data-toggle="tab" href="" ng-click="InfoClick()">
+            <i class="fa fa-info"></i>Member Info
+        </a>
+
+
+        <span class="after"></span>
+
+    </li>
+    <li class="@ViewBag.HighLightContact">
+        <a data-toggle="tab" href="" ng-click="ContactClick()">
+            <i class="fa fa-user"></i>Contact
+        </a>
+
+
+        <span class="after"></span>
+    </li>
+    <li class="@ViewBag.HighLightVehicle">
+        <a data-toggle="tab" href="" ng-click="VehicleClick()">
+            <i class="fa fa-vk"></i>Vehicles
+        </a>
+
+
+        <span class="after"></span>
+    </li>
+    <li class="@ViewBag.HighLightMedallion">
+        <a data-toggle="tab" href="" ng-click="MedallionClick()">
+            <i class="fa fa-medkit"></i>Medallions
+        </a>
+
+
+        <span class="after"></span>
+    </li>
+
+    <li class="@ViewBag.HighLightAgent">
+        <a data-toggle="tab" href="" ng-click="AgentClick()">
+            <i class="fa fa-group"></i>Agents
+        </a>
+
+
+        <span class="after"></span>
+    </li>
+    <li class="@ViewBag.HighLightStandardDue">
+        <a data-toggle="tab" href="" ng-click="AssociationDueClick()">
+            <i class="fa fa-bullhorn"></i>Association Dues
+        </a>
+
+
+        <span class="after"></span>
+    </li>
+</ul>
+<script>
+    jQuery(document).ready(function () {
+        App.init(); // initlayout and core plugins
+
+        //Index.init();         
+    });
+
+</script>
+

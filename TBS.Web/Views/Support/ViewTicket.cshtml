@@ -1,0 +1,53 @@
+﻿@Scripts.Render("~/bundles/ngTicket")
+<form class="row" name="frmCreateRaiseTicket" novalidate ng-controller="ViewTicketController">
+    <div class="col-md-12 blog-page">
+        <div class="row">
+            <div class="col-md-12 article-block">
+                From {{ticket.CreateBy}}                    
+                 <br /> <h3> {{ticket.Title}} </h3>
+                <span ng-bind-html="objMessage"></span>
+                <!--end news-tag-data-->
+                <div class="media">
+                    <h3>Replies</h3>
+                    <a href="#" class="pull-left">
+                        <img alt="" src="assets/img/blog/9.jpg" class="media-object">
+                    </a>
+                    <div class="media-body" ng-repeat="item in lstTickets">
+                        <h4 class="media-heading">
+                            From {{item.CreateBy}}
+                            <span>
+                                at {{item.CreateAt}}
+                            </span>
+                        </h4>
+                        <p>
+                            <span ng-bind-html="item.Message"></span>
+                        </p>
+                        <hr>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="post-comment">
+                    <h3>Leave a Comment</h3>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Reply</label>
+                            <div class="col-md-9">
+                                <textarea data-ng-model="Message" data-ck-editor></textarea>
+                                <small style="color: #ff0000">
+                                    <span class="error" ng-show="IsSubmitted && frmCreateRaiseTicket.Message.$error.required">Message is required.</span>
+                                </small>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-offset-1 col-md-9">
+                                    <button type="button" class="btn blue btn-lg" ng-click="PostTicket(frmCreateRaiseTicket.$invalid)">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

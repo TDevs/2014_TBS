@@ -1,0 +1,442 @@
+﻿<link href="/assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" />
+
+
+@Scripts.Render("~/bundles/ngcompany")
+
+<form class="row" ng-controller="CompanyController" name="frm" novalidate>
+
+    <div class="col-md-6">
+        <div class="portlet box">
+            <div class="portlet-body form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="Name" ng-model="Company.Name" required>
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.Name.$error.required">
+                                    Name is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Taxi Representative's Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="TaxiRepresentativeName" ng-model="Company.TaxiRepresentativeName">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company Address 1</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="Company.Address1" name="Address1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company Address 2</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.Address2" name="Address2">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company City</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" name="City" ng-model="Company.City">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">State/Zip</label>
+                            <div class="col-md-3">
+                                <select class="form-control" ng-model="Company.State" name="State" required>
+                                    <option ng-repeat="state in States" ng-value="state">{{state}}</option>
+                                </select>
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.State.$error.required">
+                                    State is required.
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.Zip" name="Zip" input-mask="{mask:'99999'}" ng-type="phone" required>
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.Zip.$error.required&& frm.$dirty">
+                                    Zip is required.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Send Remittance To</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.SendRemittanceTo" name="SendRemittanceTo">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company Phone 1</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.Phone1" name="Phone1" input-mask="{mask:'999-999-9999'}" ng-type="phone" required>
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.Phone1.$error.required && frm.$dirty">
+                                    Phone number can not contain characters
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company Phone 2</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.Phone2" name="Phone2" input-mask="{mask:'999-999-9999'}" ng-type="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company Fax</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.Fax" name="Fax" input-mask="{mask:'999-999-9999'}" ng-type="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company Email</label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Enter text" ng-model="Company.Email" name="Email">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.Email.$error.email && frm.$dirty">
+                                    Email invalid.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Company URL</label>
+                            <div class="col-md-6">
+                                <input type="url" class="form-control" placeholder="Enter text" ng-model="Company.URL" name="URL">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.URL.$error.url && frm.$dirty">
+                                    URL invalid
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Comments</label>
+                            <div class="col-md-6">
+                                <textarea type="text" class="form-control" rows="3" placeholder="Enter text" ng-model="Company.Comment" name="Comment"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Receipt Message</label>
+                            <div class="col-md-6">
+                                <textarea type="text" class="form-control" rows="3" placeholder="Enter text" ng-model="Company.ReceiptMessage" name="ReceiptMessage"></textarea>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="col-md-5 control-label">Interest Rate</label>
+                            <div class="col-md-6">
+                               <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.InterestRate" name="InterestRate" input-mask="{mask:'99999.99'}" ng-type="decimal">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.InterestRate.$error.required && frm.$dirty">
+                                    Interest Rate is required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="portlet box">
+            <div class="portlet-body form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label">Default Registered Agent</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Company.UseCompanyAddress" name="UseCompanyAddress">
+                                        Use Company Address?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Registered Agent Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.AgentName" name="AgentName">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Registered Agent Address 1</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.AgentAddress1" name="AgentAddress1" ng-disabled="Company.UseCompanyAddress">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Registered Agent Address 2</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.AgentAddress2" name="AgentAddress2" ng-disabled="Company.UseCompanyAddress">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Registered Agent City</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.AgentCity" name="AgentCity" ng-disabled="Company.UseCompanyAddress">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Registered Agent State/Zip</label>
+                            <div class="col-md-3">
+                                <select class="form-control" ng-model="Company.AgentState" name="AgentState" ng-disabled="Company.UseCompanyAddress">
+                                    <option ng-repeat="state in States" ng-value="state">{{state}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.AgentZip" name="AgentZip" input-mask="{mask:'99999'}" ng-type="phone" required ng-disabled="Company.UseCompanyAddress">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.AgentZip.$error.required">
+                                    Zip is required.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Registered Agent Phone</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.AgentPhone" name="AgentPhone" input-mask="{mask:'999-999-9999'}" ng-type="phone">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.AgentPhone.$error.number">
+                                    Phone number can not contain characters
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Account Setting</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Company.AutoAssignAccountNumber" name="AutoAssignAccountNumber">
+                                        Auto Assign Account Number?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Key</label>
+                            <div class="col-md-5">
+                                <input type="number" class="form-control" placeholder="Enter text" ng-model="Company.Key" name="Key">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Standard Association Dues($, weekly)</label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" placeholder="Enter text" ng-model="Company.StandardAssociationDue" name="StandardAssociationDue" input-mask="{mask:'99999.99'}" ng-type="decimal">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.StandardAssociationDue.$error.number">
+                                    Allow enter digits.
+                                </span>
+                                <br />
+                                <button class="btn default" type="button">MANAGE DUES</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Standard Agent Fee($, weekly)</label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" placeholder="Enter text" ng-model="Company.StandardAgentFee" name="StandardAgentFee" input-mask="{mask:'99999.99'}" ng-type="decimal">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.StandardAgentFee.$error.number">
+                                    Allow enter digits.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Default Late Breaks</label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" placeholder="Enter text" ng-model="Company.DefaultLateBreak" name="DefaultLateBreak" input-mask="{mask:'99999.99'}" ng-type="decimal">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.DefaultLateBreak.$error.number">
+                                    Allow enter digits.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Default Late Charge($ per each late week)</label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" placeholder="Enter text" ng-model="Company.DefaultLateCharge" name="DefaultLateCharge" input-mask="{mask:'99999.99'}" ng-type="decimal">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.DefaultLateCharge.$error.number">
+                                    Allow enter digits.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Default Worker Comp(weekly)</label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" placeholder="Enter text" ng-model="Company.DefaultWorkComp" name="DefaultWorkComp" input-mask="{mask:'99999.99'}" ng-type="decimal">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.DefaultWorkComp.$error.number">
+                                    Allow enter digits.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Credit Card Fee(%)</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.CreditCardFee" name="CreditCardFee" input-mask="{mask:'99999.99'}" ng-type="decimal">
+                                <span style="color:#ff0000" ng-show="IsSubmitted && frm.CreditCardFee.$error.number">
+                                    Allow enter digits.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Payment Type</label>
+                            <div class="col-md-6">
+                                <select class="form-control" ng-model="Company.PaymentType" name="PaymentType">
+                                    <option ng-repeat="payment in PaymentType">{{payment}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-reorder"></i>Payment Receipt Settings
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <div class="col-md-9">
+                                <div class="checkbox-list">
+                                    <label>
+                                        <input type="checkbox" ng-model="Company.SummaryReceipt" name="SummaryReceipt">
+                                        Summary Receipt
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" ng-model="Company.TwoPartReceipt" name="TwoPartReceipt">
+                                        2 Part Receipt
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" ng-model="Company.AutomaticCashiering" name="AutomaticCashiering">
+                                        Automatic Cashiering
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-reorder"></i>Member Search Settings
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <div class="col-md-9">
+                                <div class="radio-list">
+                                    <labe>
+                                        <input type="radio" name="optionsRadios" ng-model="SearchBy" ng-value="1">
+                                        Search By Account Number
+                                    </labe>
+                                    <label>
+                                        <input type="radio" name="optionsRadios" ng-model="SearchBy" ng-value="2">
+                                        Search By Medallion Number
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="optionsRadios" ng-model="SearchBy" ng-value="3">
+                                        Search By Agent Chauffer Number
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="optionsRadios" ng-model="SearchBy" ng-value="4">
+                                        Search By SSN
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="optionsRadios" ng-model="SearchBy" ng-value="5">
+                                        Search By Agent Member Name
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="optionsRadios" ng-model="SearchBy" ng-value="6">
+                                        Search By Agent Member Contact Name
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="optionsRadios" ng-model="SearchBy" ng-value="7">
+                                        Search By Agent Last Name
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   @* <div class="col-md-12">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-reorder"></i>CTA-TAP Voucher Invoice
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Invoice - Key</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter text" ng-model="Company.Invoice_Key" name="Invoice_Key">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="col-md-12">
+        <div class="portlet box">
+            <div class="portlet-body ">
+                <div class="form-horizontal">
+                    <div class="clearfix">
+                        <div class="col-md-offset-6 col-md-12">
+                            <button type="button" class="btn blue btn-lg" ng-show="role.AccountCanEdit" ng-click="Save(frm.$valid)">Save   </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+

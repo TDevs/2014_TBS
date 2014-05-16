@@ -1,0 +1,38 @@
+﻿<form class="form-horizontal" name="frmEditVehicleModel" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Edit Vehicle Model</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Name: </label>
+            <div class="col-md-8">
+                <input ng-model="vehicleModelItem.Name" name="Name" required class="form-control" />
+                <small style="color: #ff0000">
+                    <span class="error" ng-show="IsSubmitted && frmEditVehicleModel.Name.$error.required">Name is required.</span>
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Make: </label>
+            <div class="col-md-8">
+                <select ng-model="vehicleModelItem.VehicleMakeId" name="VehicleMakeId" class="form-control" required>
+                    <option ng-repeat="s in VehicleMakeList" value="{{s.Id}}" >{{s.Name}}</option>
+                </select>
+                <small style="color: #ff0000">
+                    <span class="error" ng-show="IsSubmitted && frmEditVehicleModel.VehicleMakeId.$error.required">Vehicle Make is required.</span>
+                </small> 
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn-default btn green" ng-click="SaveVehicleModel(frmEditVehicleModel.$invalid)" />
+                <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+            </div>
+
+        </div>
+    </div>
+</form>
+

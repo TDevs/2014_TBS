@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Manage Users";
+}
+@Scripts.Render("~/bundles/ngUsers")
+
+<div class="row" ng-controller="UserListController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-user"></i>Users
+                </div>
+                <div class="actions">
+                    <a href="#" class="btn blue" ng-show="role.UserCanCreate" ng-click="AddUser()">
+                        <i class="fa fa-plus"></i>Add
+                    </a>
+                    <div class="btn-group">
+                        <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                        </a>
+                        <div id="tblUser_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                            <label>
+                                <input type="checkbox" checked data-column="0">Login</label>
+                            <label>
+                                <input type="checkbox" checked data-column="1">Full Name</label>
+                            <label>
+                                <input type="checkbox" checked data-column="2">Address</label>
+                            <label>
+                                <input type="checkbox" checked data-column="3">City</label>
+                            <label>
+                                <input type="checkbox" checked data-column="4">State</label>
+                            <label>
+                                <input type="checkbox" checked data-column="5">Phone</label>
+                            <label>
+                                <input type="checkbox" checked data-column="6">e-mail</label>
+                            <label>
+                                <input type="checkbox" checked data-column="7">Active</label>
+                            <label>
+                                <input type="checkbox" checked data-column="8">Permanent</label>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover table-full-width" id="tblUser" aa-data="Users" paging-table >
+                    <thead>
+                        <tr>
+                            <th>Login
+                            </th>                             
+                            <th>Full Name
+                            </th>
+                            <th>Address
+                            </th>   
+                            <th>City
+                            </th>
+                            <th>State
+                            </th>
+                            <th>Phone
+                            </th>
+                            <th>e-mail
+                            </th>
+                            <th>Active
+                            </th>                                  
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody ng-show="role.UserCanViewList">
+                        <tr ng-repeat="user in Users">
+                            <td>{{user.UserName}}
+                                <input type="hidden" ng-model="user.Id" />
+                            </td>                                  
+                            <td>{{user.FullName}}
+                            </td>
+                            <td>{{user.Address}}
+                            </td>
+                            <td>{{user.City}}
+                            </td>
+                            <td>{{user.State}}
+                            </td>
+                            <td>{{user.Phone1}}
+                            </td>
+                            <td>{{user.Email}}
+                            </td>
+                            <td align="center">
+                                <input type="checkbox" readonly ng-model="user.Active" />
+                            </td>                                 
+                            <td align="center">
+                                <a href="#" title="Edit" ng-show="role.UserCanEdit" ng-click="EditUser(user)">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="#" title="Delete" ng-show="role.UserCanDelete" ng-click="DeleteUser(user)">
+                                    <i class="fa fa-ban"></i>
+                                </a>
+                                <a href="#" title="Roles" ng-show="role.UserCanEdit" ng-click="EditRoles(user)">
+                                    <i class="fa fa-users"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

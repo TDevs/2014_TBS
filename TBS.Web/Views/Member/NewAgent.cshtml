@@ -1,0 +1,344 @@
+﻿<div class="tab-pane active" id="memberSearch">
+    <br />
+    <div class="portlet box grey" ng-controller="CreateAgentController">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-reorder"></i>
+                New Agent
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form class="form-horizontal" name="frm" novalidate>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label">Picture</label>
+                            <div class="col-md-6">
+                                <div class="fileinput fileinput-new">
+                                    <div class="fileinput-preview thumbnail" style="width: 200px; height: 150px;">
+                                        <img ng-src="{{Agent.PictureAgent}}" />
+                                    </div>
+                                    <div>
+                                        <span class="btn default btn-file">
+                                            <input type="file" name="..." id="divUploadImage">
+                                            Upload Image
+                                        </span>
+                                        <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">Remove
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">First Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="FirstName" ng-model="Agent.FirstName" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.FirstName.$error.required">First Name is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Last Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="LastName" ng-model="Agent.LastName" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.LastName.$error.required">Last Name is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Address 1</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="Address" ng-model="Agent.Address" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.Address.$error.required">Address is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Address 2</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="Address1" ng-model="Agent.Address1" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.Address1.$error.required">Address 1 is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">City</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="City" ng-model="Agent.City" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.City.$error.required">City is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">State/Zip</label>
+                            <div class="col-md-3">
+                                <select class="form-control" ng-model="Agent.State" name="State" required>
+                                    <option ng-repeat="state in States" ng-value="state">{{state}}</option>
+                                </select>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.State.$error.required">State is required
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" ng-model="Agent.Zip" name="Zip" input-mask="{mask:'99999'}" ng-type="phone" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.Zip.$error.required">Zip is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Comments</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control" name="Comments" ng-model="Agent.Comments">      </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Start Date</label>
+                            <div class="col-md-6">
+                                <div class="input-group input-medium date date-picker">
+                                    <input type="text" class="form-control" datetime-picker="mm/dd/yyyy" name="StartDate" ng-model="Agent.StartDate" readonly="" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.StartDate.$error.required">Start Date is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Active Date</label>
+                            <div class="col-md-6">
+                                <div class="input-group input-medium date date-picker">
+                                    <input type="text" class="form-control" datetime-picker="mm/dd/yyyy" name="ActiveDate" ng-model="Agent.ActiveDate" readonly="" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.ActiveDate.$error.required">Active Date is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Inactive Date</label>
+                            <div class="col-md-6">
+                                <div class="input-group input-medium date date-picker">
+                                    <input type="text" class="form-control" datetime-picker="mm/dd/yyyy" name="InactiveDate" ng-model="Agent.InactiveDate" readonly="" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.InactiveDate.$error.required">Inactive Date is required
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--Member Preferences-->
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">SSN</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="SSN" ng-model="Agent.SSN" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.SSN.$error.required">SSN is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Date Of Birth</label>
+                            <div class="col-md-6">
+                                <div class="input-group input-medium date date-picker">
+                                    <input type="date" class="form-control" readonly="" name="DateOfBirth" datetime-picker="mm/dd/yyyy" ng-model="Agent.DateOfBirth" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.DateOfBirth.$error.required">Date Of Birth is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Mobile Phone</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="MobilePhone" ng-model="Agent.MobilePhone" input-mask="{mask:'999-999-9999'}" ng-type="phone" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.MobilePhone.$error.required">Mobile Phone is required
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Home Phone</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="HomePhone" ng-model="Agent.HomePhone" input-mask="{mask:'999-999-9999'}" ng-type="phone" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.HomePhone.$error.required">Home Phone is required
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Driver ID</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="DriverID" ng-model="Agent.DriverID" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.DriverID.$error.required">Driver ID is required
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Chauffer Lic #</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="ChaufferLic" ng-model="Agent.ChaufferLic" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.ChaufferLic.$error.required">Chauffer Lic is required
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Driver Lic #</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="DriveLic" ng-model="Agent.DriveLic" required>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.ChaufferLic.$error.required">Drive Lic is required
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Continue Education</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="ContinueEducation" ng-model="Agent.ContinueEducation">
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.ContinueEducation.$error.required">Continue Education is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">License State</label>
+                            <div class="col-md-5">
+                                <select class="form-control" ng-model="Agent.LicenseState" name="LicenseState" required>
+                                    <option ng-repeat="state in States" ng-value="state">{{state}}</option>
+                                </select>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.LicenseState.$error.required">License State is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="col-md-5 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="Agent.CTATAP" name="CTATAP">
+                                        CTA-TAP?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Status</label>
+                            <div class="col-md-5">
+                                <select class="form-control" ng-model="Agent.Status" name="Status" required>
+                                    <option ng-repeat="status in Status" ng-value="status">{{status}}</option>
+                                </select>
+                                <span style="color: #ff0000" ng-show="IsSubmitted && frm.Status.$error.required">Status is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Day Driver</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <input type="checkbox" ng-model="Agent.DayDriver" name="DayDriver">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Night Driver</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <input type="checkbox" ng-model="Agent.NightDriver" name="NightDriver">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Vehicles-->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-9">
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <i class="fa fa-briefcase"></i>Vehicle             
+                                            </th>
+                                            <th>
+                                                <i class="fa fa-bookmark"></i>Agent Fee
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="agentvehicle in AgentVehicleList">
+                                            <td>{{agentvehicle.LicenseNumber}}</td>
+                                            <td>
+                                                <input type="checkbox" value="{{agentvehicle.AgentFee}}" ng-checked="agentvehicle.AgentFee" disabled />
+                                            </td>
+                                            <td>
+                                                <a href="" class="btn default btn-xs green-stripe" ng-click="DelAgentVehicle(agentvehicle);">Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <input type="button" value="ASSIGN NEW" class="btn btn yellow" ng-click="NewAgentVehicle();" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--Member Preferences-->
+                </div>                     
+            </form>
+            <div class="form-actions nobg fluid">
+                <div class="col-md-offset-5 col-md-9">
+                    <button type="button" class="btn btn green" ng-click="Save(frm.$invalid)">Save</button>
+                    <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

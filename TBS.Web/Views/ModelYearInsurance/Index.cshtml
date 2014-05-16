@@ -1,0 +1,55 @@
+﻿ 
+@Scripts.Render("~/bundles/ngmodelyearinsurance")
+ 
+<div class="row" ng-controller="ModelYearInsuranceListController">
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>Model Year Insurance
+            </div>
+            <div class="actions">
+                <a href="#" class="btn blue" ng-click="AddModelYearInsurance()">
+                    <i class="fa fa-pencil"></i>Add
+                </a>
+                 <div class="btn-group">
+                    <a class="btn default" href="#" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblModelYearInsurance_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0">Model Year</label>
+                        <label>
+                            <input type="checkbox" checked data-column="1">Amount</label>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblModelYearInsurance" aa-data="ModelYearInsuranceList" paging-table>
+                <thead>
+                    <tr>                             
+                        <th>Model Year
+                        </th>
+                        <th>Amount
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="modelYearInsuranceItem in ModelYearInsuranceList">
+                        
+                        <td>{{modelYearInsuranceItem.ModelYear}}</td>
+                        <td>{{modelYearInsuranceItem.Amount | currency:""}}</td>
+                        <td>
+                            <a href="#" ng-click="EditModelYearInsurance(modelYearInsuranceItem)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="#" ng-click="DeleteModelYearInsurance(modelYearInsuranceItem)">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

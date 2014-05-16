@@ -1,0 +1,53 @@
+﻿@Scripts.Render("~/bundles/ngvehiclefeature")
+
+<div class="row" ng-controller="VehicleFeatureListController">
+   <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bars"></i>Vehicle Features
+            </div>
+            <div class="actions">
+                <a href="#" class="btn blue" ng-click="AddVehicleFeature()">
+                    <i class="fa fa-pencil"></i>Add
+                </a>
+                 <div class="btn-group">
+                    <a class="btn default" href="#" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div id="tblVehicleFeature_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                        <label>
+                            <input type="checkbox" checked data-column="0">Feauture</label>
+                        <label>
+                            <input type="checkbox" checked data-column="1">Description</label>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover" id="tblVehicleFeature" aa-data="VehicleFeatureList" paging-table>
+                <thead>
+                    <tr>                           
+                        <th>Feature
+                        </th>
+                        <th>Description
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="vehicleFeatureItem in VehicleFeatureList">                        
+                        <td>{{vehicleFeatureItem.Name}}</td>
+                        <td>{{vehicleFeatureItem.Description}}</td>
+                        <td>
+                            <a href="#" ng-click="EditVehicleFeature(vehicleFeatureItem)">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="#" ng-click="DeleteVehicleFeature(vehicleFeatureItem)">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

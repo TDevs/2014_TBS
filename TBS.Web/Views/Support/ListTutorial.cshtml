@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Tutorial";
+}
+@Scripts.Render("~/bundles/ngTutorial")
+<div class="row" ng-controller="TutorialListController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa-ban"></i>Tutorial
+                </div>
+                <div class="actions">
+                    <a href="#" class="btn blue" ng-click="AddTutorial()">
+                        <i class="fa fa-plus"></i> Add
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover" id="tblRole">
+                    <thead>
+                        <tr>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Content
+                            </th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in Tutorials">
+                            <td>
+                                {{item.Title}}
+                            </td>
+                            <td>
+                                <span ng-bind-html="item.Content"></span>
+                            </td>
+                            <td align="center">
+                                <a href="#" title="Edit" ng-show="role.RoleCanEdit" ng-click="EditTutorial(item)">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="#" title="Delete" ng-show="role.RoleCanDelete" ng-click="DeleteRole(item)">
+                                    <i class="fa fa-ban"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

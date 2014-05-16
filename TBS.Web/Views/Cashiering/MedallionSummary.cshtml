@@ -1,0 +1,117 @@
+﻿<div class="tab-pane active" id="memberSearch">
+    <div class="row" ng-controller="CashieringController">
+        <div class="col-md-3">
+            @Html.Partial("_CashieringMenu")
+        </div>
+        <div class="col-md-9">
+            <div class="portlet box grey" ng-controller="MedallionSummaryController">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bars"></i>
+                        Account Summary
+                    </div>
+                    <div class="actions">                        
+                        <div class="btn-group">
+                            <a class="btn default" href="" data-toggle="dropdown">Columns <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div id="tblUser_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                                <label>
+                                    <input type="checkbox" checked data-column="0">Med #</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="1">Status</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="2">Amount Owed</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="3">Days late</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="4">Paid Till Date</label>
+                                <label>
+                                    <input type="checkbox" checked data-column="5">Payment Due Date</label>
+                               </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <!--Content-->
+                    <table class="table table-striped table-bordered table-hover" id="tblUser" aa-data="MedallionSummaryList" paging-table>
+                        <thead>
+                            <tr>                                
+                                <th>Med #
+                                </th>
+                                <th>Status
+                                </th>
+                                <th>Amount Owed
+                                </th>
+                                <th>Days late
+                                </th>
+                                <th>Paid Till Date
+                                </th>
+                                <th>Payment Due Date
+                                </th>
+                                <th>Date Due</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="medallion in MedallionSummaryList">                                
+                                <td>{{medallion.MedallionNumber}}
+                                </td>
+                                <td>{{medallion.Status}}
+                                </td>
+                                <td style="text-align: right;">${{medallion.CurrentBalance}}
+                                </td>
+                                <td>{{medallion.DateLates}}
+                                </td>
+                                <td>{{medallion.PayTillDate}}
+                                </td>
+                                <td>{{medallion.PaymentDueDate}}
+                                </td>
+                                <td>
+                                    <a href="" class="btn default btn-xs purple" ng-click="Change(medallion)">
+                                        <i class="fa fa-edit">Change</i>    </a>
+                                    <a href="" class="btn default btn-xs purple" ng-click="CashierMember(medallion)">
+                                        <i class="fa fa-video-camera">Cashier Member</i>      </a>
+                                    <a href="" class="btn default btn-xs purple" ng-click="CashierAgent(medallion)">
+                                        <i class="fa fa-road">Cashier Agent</i></a>
+                                    <a href="" class="btn default btn-xs purple" ng-click="ViewPaymentHistory(medallion)">
+                                        <i class="fa fa-power-off">Payment History</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--End Content-->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-reorder"></i>Receipt Settings
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        <div class="checkbox-list">
+                                            <label>
+                                                <input type="checkbox" ng-model="SummaryReceipt" name="SummaryReceipt">
+                                                Summary Receipt
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" ng-model="TwoPartReceipt" name="TwoPartReceipt">
+                                                2 Part Receipt
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

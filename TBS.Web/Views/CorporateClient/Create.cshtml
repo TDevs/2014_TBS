@@ -1,0 +1,134 @@
+﻿<form class="form-horizontal" name="frmEditCorporateClient" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Create New Corporate Client </h4>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Name: </label>
+            <div class="col-md-8">
+                <input ng-model="corporateclient.Name" name="Name" required class="form-control" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted && frmEditCorporateClient.Name.$error.required">Name is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Address: </label>
+            <div class="col-md-8">
+                <input ng-model="corporateclient.Address" name="Address" required class="form-control" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted &&frmEditCorporateClient.Address.$error.required">Address is required.</span>
+                </small>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Addess1: </label>
+            <div class="col-md-8">
+                <input ng-model="corporateclient.Address1" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">City: </label>
+            <div class="col-md-8">
+                <input ng-model="corporateclient.City" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">State: </label>
+            <div class="col-md-8">
+                <select ng-model="corporateclient.State" name="State" class="form-control" required>
+                    <option ng-repeat="s in state" ng-value="s">{{s}}</option>
+                </select>
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted &&frmEditCorporateClient.State.$error.required">State is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Zip: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_zip1" ng-model="corporateclient.Zip" name="Zip" required class="form-control" input-mask="{mask:'99999'}" ng-type="phone" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted &&frmEditCorporateClient.Zip.$error.required">Zip is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Comment: </label>
+            <div class="col-md-8">
+                <textarea ng-model="corporateclient.Comment" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Phone 1: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_phone1" ng-model="corporateclient.Phone1" name="Phone1" input-mask="{mask:'999-999-9999'}" ng-type="phone" required class="form-control" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted && frmEditCorporateClient.Phone1.$error.required">Phone 1 is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Phone 2: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_phone2" ng-model="corporateclient.Phone2" class="form-control" input-mask="{mask:'999-999-9999'}" ng-type="phone" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Fax: </label>
+            <div class="col-md-8">
+                <input type="text" id="mask_fax1" ng-model="corporateclient.Fax" name="Fax" class="form-control" input-mask="{mask:'999-999-9999'}" ng-type="phone" />
+                <small style="color: #ff0000">
+                    <span ng-show="IsSubmitted && frmEditCorporateClient.Fax.$error.required">Fax is required.</span>
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Email: </label>
+            <div class="col-md-8">
+                <input ng-model="corporateclient.Email" class="form-control" type="email"  name="Email"/>
+                <span style="color: #ff0000" ng-show="IsSubmitted && frmEditCorporateClient.Email.$error.email">Email invalid.
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Default:</label>
+            <div class="col-md-8">
+                <input type="checkbox" ng-model="corporateclient.Default" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Process Fee: </label>
+            <div class="col-md-8">
+                <input ng-model="corporateclient.ProcessFee" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Company Fee: </label>
+            <div class="col-md-8">
+                <input ng-model="corporateclient.CompanyFee" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" value="Save" class="btn btn-default btn green" ng-click="Save(frmEditCorporateClient.$invalid)" />
+            <input type="button" value="Cancel" class="btn btn-default" ng-click="Cancel()" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,66 @@
+﻿@Scripts.Render("~/bundles/ngReport")
+<div class="tab-pane active" ng-controller="LateReportController">
+    <div class="row" >
+        <form name="frm" novalidate>
+            <div class="col-md-12">
+                <h3 class="form-section">Late Report</h3>
+            </div>
+            <div class="col-md-12">
+                <div class="portlet box">
+                    <div class="portlet-body form">
+                        <div class="form-horizontal">
+                            <div class="form-body">
+                                <!--Content-->
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Member Status</label>
+                                    <div class="col-md-6 radio-list">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" ng-model="report.MemberStatus" value="Active">
+                                                        Active
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" ng-model="report.MemberStatus" value="Deleted">
+                                                        Deleted
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" ng-model="report.MemberStatus" value="All">
+                                                        All
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-7">
+            <div class="portlet box">
+                <div class="portlet-body ">
+                    <div class="form-horizontal">
+                        <div class="clearfix">
+                            <div class="col-md-offset-8 col-md-7">
+                                <button type="button" class="btn blue btn-lg" ng-click="GenerateReport(frm.$invalid)">Generate Report </button>
+                                <button type="button" class="btn blue btn-lg">Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+         <table class="table table-striped table-bordered table-hover" id="tblUser" aa-data="DataSourceList" paging-table>             
+        </table>
+    </div>
+</div>
